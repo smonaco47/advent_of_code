@@ -1,0 +1,6 @@
+c:\users\swilliams\documents\visual studio 2015\Projects\AdventOfCode_16_1_1\AdventOfCode_16_1_1\bin\Debug\AdventOfCode_16_1_1.exe.config
+c:\users\swilliams\documents\visual studio 2015\Projects\AdventOfCode_16_1_1\AdventOfCode_16_1_1\bin\Debug\AdventOfCode_16_1_1.exe
+c:\users\swilliams\documents\visual studio 2015\Projects\AdventOfCode_16_1_1\AdventOfCode_16_1_1\bin\Debug\AdventOfCode_16_1_1.pdb
+c:\users\swilliams\documents\visual studio 2015\Projects\AdventOfCode_16_1_1\AdventOfCode_16_1_1\obj\Debug\AdventOfCode_16_1_1.csprojResolveAssemblyReference.cache
+c:\users\swilliams\documents\visual studio 2015\Projects\AdventOfCode_16_1_1\AdventOfCode_16_1_1\obj\Debug\AdventOfCode_16_1_1.exe
+c:\users\swilliams\documents\visual studio 2015\Projects\AdventOfCode_16_1_1\AdventOfCode_16_1_1\obj\Debug\AdventOfCode_16_1_1.pdb
