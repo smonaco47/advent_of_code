@@ -27,17 +27,7 @@ namespace Day12
 
             Assert.AreEqual(1,computer[register]);
         }
-
-        //[Test]
-        //public void set_register_if_not_exists()
-        //{
-        //    var computer = new Computer();
-        //    var register = Any.Register();
-        //    computer[register] = 1;
-
-        //    Assert.AreEqual(1, computer[register]);
-        //}
-
+        
         [Test]
         public void execute_step_at_instruction_pointer_address()
         {
@@ -69,12 +59,10 @@ namespace Day12
         }
 
         [Test]
-        public void execute_each_instruction_on_execute_all() // not actually doing each here, could do one then complete flag
+        public void execute_each_instruction_on_execute_all()
         {
-            var instruction1 = new Mock<IInstruction>();
-            var instruction2 = new Mock<IInstruction>();
-            var instruction3 = new Mock<IInstruction>();
-            var instructions = new[] {instruction1.Object, instruction2.Object , instruction3.Object };
+            var instruction = new Mock<IInstruction>();
+            var instructions = new[] {instruction.Object };
             var computer = new MockComputerBuilder()
                 .WithDefaultRegisterValue(Computer.InstructionPointer, 0)
                 .WithInstructions(instructions)
@@ -82,9 +70,8 @@ namespace Day12
 
             computer.ExecuteAll();
             
-            instruction1.Verify(i =>i.Execute(computer), Times.Once);
-            instruction2.Verify(i => i.Execute(computer), Times.Once);
-            instruction3.Verify(i => i.Execute(computer), Times.Once);
+            instruction.Verify(i =>i.Execute(computer), Times.Once);
+            Assert.AreEqual(true, computer.Complete);
         }
 
         [Test]
@@ -116,8 +103,9 @@ namespace Day12
             Assert.AreEqual(initPointer, computer[Computer.InstructionPointer]);
         }
 
+        // Technically end-to-end testing, test case from the problem
         [Test]
-        public void execute_each_instruction_on_execute_all_with_jump()
+        public void execute_all_with_jump()
         {
             var instructions = new IInstruction[6];
             instructions[0] = new CopyValueToRegisterInstruction('a',41);

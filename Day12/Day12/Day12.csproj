@@ -64,6 +64,8 @@
     <Compile Include="CopyValueToRegisterInstruction_should.cs" />
     <Compile Include="DecrementInstruction.cs" />
     <Compile Include="DecrementInstruction_should.cs" />
+    <Compile Include="FileImport.cs" />
+    <Compile Include="FileImport_should.cs" />
     <Compile Include="IInstruction.cs" />
     <Compile Include="IncrementInstruction.cs" />
     <Compile Include="IncrementInstruction_should.cs" />
@@ -72,6 +74,7 @@
     <Compile Include="JumpInstruction.cs" />
     <Compile Include="JumpInstruction_should.cs" />
     <Compile Include="MockComputerBuilder.cs" />
+    <Compile Include="NullInstruction.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

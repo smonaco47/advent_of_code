@@ -24,5 +24,10 @@ namespace Day12
         }
         
         private static Random random = new Random();
+
+        public static object NonZeroNumber()
+        {
+            return random.Next() + 1;
+        }
     }
 }

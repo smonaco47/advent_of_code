@@ -8,18 +8,18 @@ namespace Day12
 {
     class CopyValueToRegisterInstruction : IInstruction
     {
-        private readonly char _register;
-        private readonly int _newValue;
+        public char Register { get; }
+        public int Value { get; }
 
         public CopyValueToRegisterInstruction(char register, int newValue)
         {
-            _register = register;
-            _newValue = newValue;
+            Register = register;
+            Value = newValue;
         }
 
         public void Execute(Computer computer)
         {
-            computer[_register] = _newValue;
+            computer[Register] = Value;
         }
     }
 }

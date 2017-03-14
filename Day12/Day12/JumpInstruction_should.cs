@@ -38,6 +38,21 @@ namespace Day12
 
             Assert.AreEqual(initialPosition + jumpDistance-1, computer[Computer.InstructionPointer]);
         }
-        
+
+        [Test]
+        public void move_by_jump_amount_when_integer()
+        {
+            var nonZeroNumber = Any.NonZeroNumber();
+            var jumpDistance = Any.JumpDistance();
+            var computer = new MockComputerBuilder()
+                .Build();
+            var initialPosition = computer[Computer.InstructionPointer];
+
+            var instruction = new JumpInstruction(1, jumpDistance);
+            instruction.Execute(computer);
+
+            Assert.AreEqual(initialPosition + jumpDistance - 1, computer[Computer.InstructionPointer]);
+        }
+
     }
 }

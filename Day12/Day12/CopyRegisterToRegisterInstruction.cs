@@ -2,18 +2,18 @@
 {
     class CopyRegisterToRegisterInstruction : IInstruction
     {
-        private readonly char _source;
-        private readonly char _destination;
+        public char Source { get; }
+        public char Destination { get; }
 
         public CopyRegisterToRegisterInstruction(char source, char destination)
         {
-            _source = source;
-            _destination = destination;
+            Source = source;
+            Destination = destination;
         }
 
         public void Execute(Computer computer)
         {
-            computer[_destination] = computer[_source];
+            computer[Destination] = computer[Source];
         }
     }
 }

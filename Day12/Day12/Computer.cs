@@ -6,10 +6,11 @@ namespace Day12
     {
         private readonly IInstruction[] _instructions;
         private readonly Dictionary<char, int> _registers;
-        private bool _complete;
 
         public const char InstructionPointer = 'i';
-        
+
+        public bool Complete { get; private set; }
+
         public Computer() : this(null) { }
 
         public Computer(IInstruction[] instructions = null)
@@ -31,7 +32,7 @@ namespace Day12
         {
             if (this[InstructionPointer] >= _instructions.Length)
             {
-                _complete = true;
+                Complete = true;
                 return;
             }
 
@@ -42,7 +43,9 @@ namespace Day12
 
         public void ExecuteAll()
         {
-            while (!_complete)
+            this[InstructionPointer] = 0;
+            Complete = false;
+            while (!Complete)
             {
                 ExecuteStep();
             }
