@@ -33,25 +33,18 @@ namespace AdventOfCode_16_1_1
             yPos = 0;
         }
 
-        public void followPath(string path, bool stopOnRepeat)
+        public void FollowPath(string path, bool stopOnRepeat)
         {
-            Dictionary<int, int> dict = new Dictionary<int, int>();
+            var coordinates = new HashSet<Coordinate>();
             var stringArray = path.Split(',');
-            foreach (string dirStr in stringArray)
+            foreach (var dirStr in stringArray)
             {
-                moveInDirection(dirStr.Trim());
-                //if (dict.Contains(value)) break;
-                //dict.Add(xPos, yPos);
+                dirStr = dirStr.Trim();
+                Rotate(dirStr.Substring(0, 1));
+                if (Move(Convert.ToInt32(dirStr.Substring(1)), coordinates)) break;
             }
         }
-
-
-
-        private void moveInDirection(string dirStr)
-        {
-            Rotate(dirStr.Substring(0,1));
-            Move(Convert.ToInt32(dirStr.Substring(1)));
-        }
+        
 
         private void Rotate(string newDirection)
         {
@@ -71,7 +64,7 @@ namespace AdventOfCode_16_1_1
             Enum.TryParse(newD.ToString(), out direction);
         }
 
-        private void Move(int steps)
+        private bool Move(int steps, HashSet<Coordinate> coordinates )
         {
             switch (this.direction)
             {
@@ -90,9 +83,14 @@ namespace AdventOfCode_16_1_1
                 default:
                     break;
             }
+            var newCoordinate = new Coordinate(yPos, xPos);
+            if (coordinates.Contains(newCoordinate)) return true;
+            coordinates.Add(newCoordinate);
+            //TODO need to add intermediate steps to the coordinates
+            return false;
         }
 
-        public int distanceFromStart()
+        public int DistanceFromStart()
         {
             return Math.Abs(xPos) + Math.Abs(yPos);
         }

@@ -9,12 +9,12 @@ namespace AdventOfCode_16_1_1
 {
     class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            ShortPathCalc spc = new ShortPathCalc();
-            string path = File.ReadAllText("input.txt");
-            spc.followPath(path, true);
-            Console.Write(spc.distanceFromStart());
+            var spc = new ShortPathCalc();
+            var path = File.ReadAllText("input.txt");
+            spc.FollowPath(path, true);
+            Console.Write(spc.DistanceFromStart());
             Console.ReadKey();
         }
     }
