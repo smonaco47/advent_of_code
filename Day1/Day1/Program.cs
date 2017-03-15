@@ -12,7 +12,7 @@ namespace AdventOfCode_16_1_1
         private static void Main(string[] args)
         {
             var spc = new ShortPathCalc();
-            var path = File.ReadAllText("input.txt");
+            var path = File.ReadAllText("input1.txt");
             spc.FollowPath(path, true);
             Console.Write(spc.DistanceFromStart());
             Console.ReadKey();

@@ -25,6 +25,7 @@ namespace AdventOfCode_16_1_1
         private directionEnum direction;
         private int xPos;
         private int yPos;
+        private HashSet<Coordinate> _coordiantes;
 
         public ShortPathCalc ()
         {
@@ -35,13 +36,13 @@ namespace AdventOfCode_16_1_1
 
         public void FollowPath(string path, bool stopOnRepeat)
         {
-            var coordinates = new HashSet<Coordinate>();
+            _coordiantes = new HashSet<Coordinate>();
             var stringArray = path.Split(',');
             foreach (var dirStr in stringArray)
             {
-                dirStr = dirStr.Trim();
-                Rotate(dirStr.Substring(0, 1));
-                if (Move(Convert.ToInt32(dirStr.Substring(1)), coordinates)) break;
+                var input = dirStr.Trim();
+                Rotate(input.Substring(0, 1));
+                if (!Move(Convert.ToInt32(input.Substring(1)))) break;
             }
         }
         
@@ -64,30 +65,44 @@ namespace AdventOfCode_16_1_1
             Enum.TryParse(newD.ToString(), out direction);
         }
 
-        private bool Move(int steps, HashSet<Coordinate> coordinates )
+        private bool Move( int steps )
+        {
+            bool newLocation = true;
+            for (int i = 0; i < steps && newLocation; i++)
+            {
+                newLocation= MoveOneStep();
+            }
+            return newLocation;
+        }
+
+        private bool MoveOneStep()
         {
             switch (this.direction)
             {
                 case directionEnum.North:
-                    yPos += steps;
+                    yPos += 1;
                     break;
                 case directionEnum.East:
-                    xPos += steps;
+                    xPos += 1;
                     break;
                 case directionEnum.South:
-                    yPos -= steps;
+                    yPos -= 1;
                     break;
                 case directionEnum.West:
-                    xPos -= steps;
+                    xPos -= 1;
                     break;
                 default:
                     break;
             }
-            var newCoordinate = new Coordinate(yPos, xPos);
-            if (coordinates.Contains(newCoordinate)) return true;
-            coordinates.Add(newCoordinate);
-            //TODO need to add intermediate steps to the coordinates
-            return false;
+            return LogCoordinate(xPos, yPos);
+        }
+
+        private bool LogCoordinate( int xPos, int yPos )
+        {
+            var newCoordinate = new Coordinate(this.yPos, xPos);
+            if (_coordiantes.Contains(newCoordinate)) return false;
+            _coordiantes.Add(newCoordinate);
+            return true;
         }
 
         public int DistanceFromStart()
