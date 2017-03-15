@@ -64,10 +64,19 @@ namespace Day20
         [Test]
         public void return_count_of_allowed_in_range()
         {
-            var input = new[] { "1-3", "2-4", "2-3" };
+            var input = new[] { "1-3", "2-4", "2-3", "8-10" };
             var ranges = new RangeCompare(input, 10);
             ranges.CalculateNonBlocked();
-            Assert.AreEqual(7, ranges.Count);
+            Assert.AreEqual(4, ranges.Count);
+        }
+
+        [Test]
+        public void return_none_allowed_in_range()
+        {
+            var input = new[] { "0-3", "2-4", "2-7", "8-10" };
+            var ranges = new RangeCompare(input, 10);
+            ranges.CalculateNonBlocked();
+            Assert.AreEqual(0, ranges.Count);
         }
     }
 }

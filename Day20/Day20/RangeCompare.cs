@@ -53,9 +53,10 @@ namespace Day20
             {
                 if (key > _maxBlocked + 1 )
                 {
-                    Count++;
                     _maxBlocked++;
+                    Count = Count + (uint)(key - _maxBlocked);
                     if (First == -1) First = _maxBlocked;
+                    _maxBlocked = key;
                 }
 
                 int endPoint = _blocked[key];
