@@ -52,8 +52,8 @@ namespace Day20
         public void convert_input_to_pair()
         {
             string input = "1-2";
-            int start;
-            int end;
+            long start;
+            long end;
 
             RangeCompare.ConvertInputToInt(input, out start, out end);
             
@@ -64,10 +64,10 @@ namespace Day20
         [Test]
         public void return_count_of_allowed_in_range()
         {
-            var input = new[] { "1-3", "2-4", "2-3", "8-10" };
+            var input = new[] { "2-4", "1-3", "2-3", "8-10", "5-5", "9-8" };
             var ranges = new RangeCompare(input, 10);
             ranges.CalculateNonBlocked();
-            Assert.AreEqual(4, ranges.Count);
+            Assert.AreEqual(3, ranges.Count);
         }
 
         [Test]
@@ -77,6 +77,15 @@ namespace Day20
             var ranges = new RangeCompare(input, 10);
             ranges.CalculateNonBlocked();
             Assert.AreEqual(0, ranges.Count);
+        }
+
+        [Test]
+        public void compute_to_max_32_bit_int()
+        {
+            var input = new[] { "0-2147483640", "2147483647-2147483647" };
+            var ranges = new RangeCompare(input, int.MaxValue);
+            ranges.CalculateNonBlocked();
+            Assert.AreEqual(6, ranges.Count);
         }
     }
 }

@@ -8,17 +8,17 @@ namespace Day20
 {
     class RangeCompare
     {
-        private SortedDictionary<int,int> _blocked;
-        public int Length => _blocked.Count;
-        private int _maxBlocked;
-        private uint _upperBound;
+        private SortedDictionary<long, long> _blocked;
+        public long Length => _blocked.Count;
+        private long _maxBlocked;
+        private long _upperBound;
 
-        public int First { get; private set; }
-        public uint Count { get; private set; }
+        public long First { get; private set; }
+        public long Count { get; private set; }
 
-        public RangeCompare(string[] input, uint upperBound)
+        public RangeCompare(string[] input, long upperBound)
         {
-            _blocked = new SortedDictionary<int, int>();
+            _blocked = new SortedDictionary<long, long>();
             BuildDictionary(input);
             _maxBlocked = -1;
             First = -1;
@@ -30,8 +30,8 @@ namespace Day20
         {
             foreach (string str in input)
             {
-                int start;
-                int end;
+                long start;
+                long end;
                 ConvertInputToInt(str, out start, out end);
                 if (_blocked.Keys.Contains(start))
                 {
@@ -49,17 +49,17 @@ namespace Day20
             First = -1;
             _maxBlocked = -1;
             Count = 0;
-            foreach (int key in _blocked.Keys)
+            foreach (long key in _blocked.Keys)
             {
                 if (key > _maxBlocked + 1 )
                 {
                     _maxBlocked++;
-                    Count = Count + (uint)(key - _maxBlocked);
+                    Count = Count + (key - _maxBlocked);
                     if (First == -1) First = _maxBlocked;
                     _maxBlocked = key;
                 }
 
-                int endPoint = _blocked[key];
+                long endPoint = _blocked[key];
                 if (endPoint > _maxBlocked)
                 {
                     _maxBlocked = endPoint;
@@ -73,11 +73,11 @@ namespace Day20
             }
         }
 
-        public static void ConvertInputToInt(string input, out int start, out int end)
+        public static void ConvertInputToInt(string input, out long start, out long end)
         {
             string[] pair = input.Split('-');
-            int.TryParse(pair[0], out start);
-            int.TryParse(pair[1], out end);
+            long.TryParse(pair[0], out start);
+            long.TryParse(pair[1], out end);
         }
     }
 }
