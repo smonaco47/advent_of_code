@@ -11,6 +11,7 @@ namespace Day24
         private Dictionary<Link, int> _links;
         private Point _start;
         private Queue<Link> _shortestPath;
+        private HashSet<Point> _nodes;
 
         public int LinkCount => _links.Count;
 
@@ -49,6 +50,9 @@ namespace Day24
                 else
                 {
                     _links.Add(link, link.Length);
+
+                    if (!_nodes.Contains(link.Start)) _nodes.Add(link.Start);
+                    if (!_nodes.Contains(link.End)) _nodes.Add(link.End);
                 }
             }
             _start = links[0].Start;
@@ -64,7 +68,7 @@ namespace Day24
             //path.Enqueue(_links.Keys.First());
         }
 
-        public void EnumerateAllPaths()
+        public void EnumerateAllPaths(HashSet<Point> nodesToVisit, Queue<Link> currentPath, Point currentNode )
         {
             
         }
