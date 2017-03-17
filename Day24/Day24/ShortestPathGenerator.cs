@@ -70,7 +70,7 @@ namespace Day24
 
         public void EnumerateAllPaths(HashSet<Point> nodesToVisit, Queue<Link> currentPath, Point currentNode )
         {
-            
+            //foreach (var link in )
         }
 
     }
