@@ -79,5 +79,22 @@ namespace Day24
         {
             Assert.Fail();
         }
+
+        [Test]
+        public void create_all_permutations_of_points()
+        {
+            var pathGenerator = new ShortestPathGenerator();
+            var points = new HashSet<Point>();
+            for (var i = 0; i < 2; i++)
+            {
+                for(var j = 0; j < 2; j++)
+                {
+                    points.Add(new Point(i, j));
+                }
+            }
+
+            pathGenerator.EnumerateAllPaths(new Point(0, 0), points);
+
+        }
     }
 }

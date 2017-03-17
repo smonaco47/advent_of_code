@@ -68,10 +68,30 @@ namespace Day24
             //path.Enqueue(_links.Keys.First());
         }
 
-        public void EnumerateAllPaths(HashSet<Point> nodesToVisit, Queue<Link> currentPath, Point currentNode )
+        public List<Queue<Point>> EnumerateAllPaths( Point currentNode, HashSet<Point> nodesRemaining )
         {
-            //foreach (var link in )
-        }
+            if (nodesRemaining.Contains(currentNode)) nodesRemaining.Remove(currentNode);
 
+            var returnList = new List<Queue<Point>>();
+            // Base case, all nodes in path
+            if (nodesRemaining.Count == 0)
+            {
+                var newQueue = new Queue<Point>();
+                newQueue.Enqueue(currentNode);
+                returnList.Add( newQueue);
+                return returnList;
+            }
+            foreach (Point node in nodesRemaining)
+            {
+                var nodesRemaining_new = new HashSet<Point>(nodesRemaining);
+                var newList = EnumerateAllPaths(node, nodesRemaining_new);
+                foreach (var queue in newList)
+                {
+                    queue.Enqueue(currentNode);
+                    returnList.Add(queue);
+                }
+            }
+            return returnList;
+        }
     }
 }
