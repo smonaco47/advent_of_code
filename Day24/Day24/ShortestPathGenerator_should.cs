@@ -69,15 +69,17 @@ namespace Day24
         }
 
         [Test]
-        public void find_shortest_path_when_multiple_locations()
+        public void create_all_permutations()
         {
-            Assert.Fail();
-        }
+            var pathGenerator = new ShortestPathGenerator();
+            var items = new HashSet<int>();
+            for (var i = 0; i < 4; i++)
+            {
+                items.Add(i);
+            }
 
-        [Test]
-        public void find_shortest_path_length_count_with_multiple_locations()
-        {
-            Assert.Fail();
+            var retVal = pathGenerator.EnumerateAllPaths<int>(0, items);
+            Assert.AreEqual(6, retVal.Count);
         }
 
         [Test]
@@ -87,14 +89,26 @@ namespace Day24
             var points = new HashSet<Point>();
             for (var i = 0; i < 2; i++)
             {
-                for(var j = 0; j < 2; j++)
+                for (var j = 0; j < 2; j++)
                 {
                     points.Add(new Point(i, j));
                 }
             }
 
-            pathGenerator.EnumerateAllPaths(new Point(0, 0), points);
+            var retVal = pathGenerator.EnumerateAllPaths<Point>(new Point(0, 0), points);
+            Assert.AreEqual(6, retVal.Count);
+        }
 
+        [Test]
+        public void find_shortest_path_when_multiple_locations()
+        {
+            Assert.Fail();
+        }
+
+        [Test]
+        public void find_shortest_path_length_count_with_multiple_locations()
+        {
+        Assert.Fail();
         }
     }
 }
