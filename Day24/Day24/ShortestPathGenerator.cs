@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,10 +9,10 @@ namespace Day24
 {
     class ShortestPathGenerator
     {
-        private Dictionary<Link, int> _links;
+        private readonly Dictionary<Link, int> _links;
         private Point _start;
         private Queue<Link> _shortestPath;
-        private HashSet<Point> _nodes;
+        private readonly HashSet<Point> _nodes;
 
         public int LinkCount => _links.Count;
 
@@ -19,6 +20,7 @@ namespace Day24
         {
             _links = new Dictionary<Link, int>();
             _shortestPath = new Queue<Link>();
+            _nodes = new HashSet<Point>();
         }
         public int ShortestPathLength
         { 
@@ -40,12 +42,10 @@ namespace Day24
                 var distance = link.Length;
                 if (_links.ContainsKey(link))
                 {
-                    int oldDistance = _links[link];
-                    if (oldDistance > link.Length)
-                    {
-                        _links.Remove(link);
-                        _links.Add(link, link.Length);
-                    }
+                    var oldDistance = _links[link];
+                    if (oldDistance <= link.Length) continue;
+                    _links.Remove(link);
+                    _links.Add(link, link.Length);
                 }
                 else
                 {
@@ -58,14 +58,12 @@ namespace Day24
             _start = links[0].Start;
         }
 
-        public void FindAllPaths()
+        public int ShortestPath()
         {
-            //var path = new Queue<Link>();
-            foreach (var link in _links.Keys)
-            {
-                _shortestPath.Enqueue(link);
-            }
-            //path.Enqueue(_links.Keys.First());
+            if (_nodes.Count == 0 ) return -1;
+            var nodesRemaining = new HashSet<Point>(_nodes);
+            var paths = EnumerateAllPaths(_start, nodesRemaining);
+            return GetShortest(paths);
         }
 
         public List<Queue<T>> EnumerateAllPaths<T>( T currentNode, HashSet<T> nodesRemaining )
@@ -92,6 +90,49 @@ namespace Day24
                 }
             }
             return returnList;
+        }
+
+        private int GetShortest(List<Queue<Point>> paths)
+        {
+            int shortest = int.MaxValue;
+            foreach (var path in paths)
+            {
+                Queue<Link> links;
+                var cost = ComputeCost(path, out links);
+                if (cost < shortest && cost != -1)
+                {
+                    shortest = cost;
+                    _shortestPath = links;
+                }
+            }
+            return shortest;
+        }
+
+        private int ComputeCost(Queue<Point> path, out Queue<Link> linksUsed)
+        {
+            var cost = 0;
+            linksUsed = new Queue<Link>();
+            for (var i = 0; i < path.Count - 1; i++)
+            {
+                var firstPoint = path.ElementAt(i);
+                var secondPoint = path.ElementAt(i+1);
+                    
+                var link = new Link(firstPoint,secondPoint,-1);
+                var linkBackwards = new Link(secondPoint, firstPoint, -1);
+                if (_links.ContainsKey(link))
+                {
+                    cost += _links[link];
+                    linksUsed.Enqueue(link);
+                }
+                else if (_links.ContainsKey(linkBackwards))
+                {
+                    cost += _links[linkBackwards];
+                    linksUsed.Enqueue(linkBackwards);
+                }
+                else return -1;
+            }
+            return cost;
+
         }
     }
 }

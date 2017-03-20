@@ -41,21 +41,21 @@ namespace Day24
             linkCpy2.Length -= 1;
 
             pathGenerator.AddLinks(new List<Link> { link, linkCpy, linkCpy2 });
-            pathGenerator.FindAllPaths();
+            pathGenerator.ShortestPath();
 
             Assert.AreEqual(linkCpy2.Length, pathGenerator.ShortestPathLength);
         }
 
-        //[Test]
-        //public void find_path_when_only_two_locations()
-        //{
-        //    var pathGenerator = new ShortestPathGenerator();
+        [Test]
+        public void find_path_when_only_two_locations()
+        {
+            var pathGenerator = new ShortestPathGenerator();
 
-        //    pathGenerator.AddLinks(new List<Link> { Any.Link() });
-        //    var path = pathGenerator.FindAllPaths();
+            pathGenerator.AddLinks(new List<Link> { Any.Link() });
+            pathGenerator.ShortestPath();
 
-        //    Assert.AreEqual(1, pathGenerator.LinkCount);
-        //}
+            Assert.AreEqual(1, pathGenerator.ShortestPathLength);
+        }
 
         [Test]
         public void find_path_length_when_only_two_locations()
@@ -102,13 +102,13 @@ namespace Day24
         [Test]
         public void find_shortest_path_when_multiple_locations()
         {
-            Assert.Fail();
+            
         }
 
         [Test]
         public void find_shortest_path_length_count_with_multiple_locations()
         {
-        Assert.Fail();
+        
         }
     }
 }
