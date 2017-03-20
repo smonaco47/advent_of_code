@@ -63,7 +63,7 @@ namespace Day24
             var pathGenerator = new ShortestPathGenerator();
             var link = Any.Link();
             pathGenerator.AddLinks(new List<Link> { link });
-            pathGenerator.FindAllPaths();
+            pathGenerator.ShortestPath();
 
             Assert.AreEqual(link.Length, pathGenerator.ShortestPathLength);
         }
