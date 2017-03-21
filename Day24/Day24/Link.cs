@@ -4,23 +4,7 @@
 namespace Day24
 {
     class Link
-    {
-        //private readonly Queue<Point> _path;
-
-        //public Link()
-        //{
-        //    _path = new Queue<Point>();
-        //}
-
-        //public Point Start => _path.Peek();
-        //public Point End { get; private set; }
-        //public double Length => _path.Count;
-
-        //public void Push(Point p)
-        //{
-        //    _path.Enqueue(p);
-        //    End = p;
-        //}
+    { 
 
         public Point Start { get; }
         public Point End { get; }

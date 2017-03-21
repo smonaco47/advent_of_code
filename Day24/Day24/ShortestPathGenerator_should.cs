@@ -47,17 +47,6 @@ namespace Day24
         }
 
         [Test]
-        public void find_path_when_only_two_locations()
-        {
-            var pathGenerator = new ShortestPathGenerator();
-
-            pathGenerator.AddLinks(new List<Link> { Any.Link() });
-            pathGenerator.ShortestPath();
-
-            Assert.AreEqual(1, pathGenerator.ShortestPathLength);
-        }
-
-        [Test]
         public void find_path_length_when_only_two_locations()
         {
             var pathGenerator = new ShortestPathGenerator();
@@ -69,6 +58,44 @@ namespace Day24
         }
 
         [Test]
+        public void find_shortest_path_length_count_with_multiple_locations()
+        {
+            var pathGenerator = new ShortestPathGenerator();
+            var point1 = new Point(0,0);
+            var point2 = new Point(1,0);
+            var point3 = new Point(2,0);
+            var link1 = new Link(point1, point2, 15);
+            var link2 = new Link(point1, point3, 5);
+            var link3 = new Link(point2, point3, 5);
+            pathGenerator.AddLinks(new List<Link> { link1, link2, link3 });
+            pathGenerator.ShortestPath();
+
+            Assert.AreEqual(link2.Length + link3.Length, pathGenerator.ShortestPathLength);
+        }
+
+        
+        [Test]
+        public void find_shortest_path_when_sides_missing()
+        {
+            var pathGenerator = new ShortestPathGenerator();
+            var point1 = new Point(0, 0);
+            var point2 = new Point(1, 0);
+            var point3 = new Point(2, 0);
+            var point4 = new Point(3, 0);
+            var link1 = new Link(point1, point2, 5);
+            var link2 = new Link(point1, point3, 10);
+            var link3 = new Link(point1, point4, 15);
+            //var link4 = new Link(point2, point3, 20); // Intentionally leaving out
+            var link5 = new Link(point2, point4, 25);
+            var link6 = new Link(point3, point4, 30);
+
+            pathGenerator.AddLinks(new List<Link> { link1, link2, link3, link5, link6 });
+            pathGenerator.ShortestPath();
+
+            Assert.AreEqual(link1.Length + link5.Length + link6.Length, pathGenerator.ShortestPathLength);
+        }
+
+         [Test]
         public void create_all_permutations()
         {
             var pathGenerator = new ShortestPathGenerator();
@@ -99,16 +126,5 @@ namespace Day24
             Assert.AreEqual(6, retVal.Count);
         }
 
-        [Test]
-        public void find_shortest_path_when_multiple_locations()
-        {
-            
-        }
-
-        [Test]
-        public void find_shortest_path_length_count_with_multiple_locations()
-        {
-        
-        }
     }
 }

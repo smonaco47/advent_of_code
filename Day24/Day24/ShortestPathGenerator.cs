@@ -121,12 +121,16 @@ namespace Day24
                 var linkBackwards = new Link(secondPoint, firstPoint, -1);
                 if (_links.ContainsKey(link))
                 {
-                    cost += _links[link];
+                    var distance = _links[link];
+                    cost += distance;
+                    link.Length = distance;
                     linksUsed.Enqueue(link);
                 }
                 else if (_links.ContainsKey(linkBackwards))
                 {
-                    cost += _links[linkBackwards];
+                    var distance = _links[linkBackwards];
+                    cost += distance;
+                    linkBackwards.Length = distance;
                     linksUsed.Enqueue(linkBackwards);
                 }
                 else return -1;
