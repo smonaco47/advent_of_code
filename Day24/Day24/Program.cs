@@ -11,7 +11,16 @@ namespace Day24
     {
         static void Main(string[] args)
         {
-            
+
+            var mazeArray = new[] { "###########",
+                "#0........#",
+                "#.#######.#",
+                "#.#######.#",
+                "#.######..#",
+                "#.......3.#",
+                "###########" };
+            var maze = new Maze('#', '.', mazeArray);
+            Console.WriteLine(maze.ToString(null));
             Console.ReadKey();
         }
     }
