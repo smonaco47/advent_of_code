@@ -79,7 +79,6 @@ namespace Day24
                 var newQueue = new Queue<T>();
                 if (start != null ) newQueue.Enqueue(start);
                 newQueue.Enqueue(currentNode);
-                newQueue.Enqueue(currentNode);
                 returnList.Add( newQueue);
                 return returnList;
             }

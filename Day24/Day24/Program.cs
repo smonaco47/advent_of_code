@@ -19,6 +19,7 @@ namespace Day24
             var links = maze.getAllLinks();
             var path = new ShortestPathGenerator();
             path.AddLinks(links);
+            path.ReturnHome = true;
             path.SetStart(maze.Start);
             int shortest = path.ShortestPath();
             Console.Write(shortest);

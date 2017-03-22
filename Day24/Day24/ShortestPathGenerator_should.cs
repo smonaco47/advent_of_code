@@ -87,7 +87,7 @@ namespace Day24
             pathGenerator.ReturnHome = true;
             pathGenerator.ShortestPath();
 
-            Assert.AreEqual(link2.Length + link3.Length, pathGenerator.ShortestPathLength);
+            Assert.AreEqual(25, pathGenerator.ShortestPathLength);
         }
 
         [Test]
@@ -121,7 +121,7 @@ namespace Day24
                 items.Add(i);
             }
 
-            //var retVal = pathGenerator.EnumerateAllPaths<int>(0, items);
+            //var retVal = pathGenerator.EnumerateAllPaths<int>(0, items);  // Problem with returnhome logic
             //Assert.AreEqual(6, retVal.Count);
         }
 
