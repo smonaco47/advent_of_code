@@ -7,9 +7,9 @@ namespace Day24
         public Maze InitializeArray()
         {
             var mazeArray = new[] { "###########",
-                "#0.1.....2#",
+                "#3.1.....2#",
                 "#.#######.#",
-                "#4.......3#",
+                "#4.......0#",
                 "###########" };
             return new Maze('#', '.', mazeArray);
         }
@@ -20,6 +20,13 @@ namespace Day24
             var maze = InitializeArray();
             Assert.AreEqual(maze.Height, 5);
             Assert.AreEqual(maze.Width, 11);
+        }
+
+        [Test]
+        public void initialize_to_start_at_zero()
+        {
+            var maze = InitializeArray();
+            Assert.AreEqual(maze.Start, new Point(9,3));
         }
 
         [Test]
@@ -35,9 +42,9 @@ namespace Day24
         {
             var maze = InitializeArray();
 
-            maze.ShortestPathBetween(new Point(1, 1), new Point(10, 3)); // 0 and 3 above
+            var shortPath = maze.ShortestPathBetween(new Point(1, 1), new Point(9, 3)); // 0 and 3 above
 
-            Assert.AreEqual(5, maze.Points.Count);
+            Assert.AreEqual(10, shortPath.Length);
         }
 
         [Test]
@@ -47,12 +54,12 @@ namespace Day24
                 "#0........#",
                 "#.#######.#",
                 "#.#######.#",
-                "#.######..#",
+                "#2######..#",
                 "#.......3.#",
                 "###########" };
             var maze = new Maze('#', '.', mazeArray);
-            var links = maze.getLinks();
-            Assert.AreEqual(5, maze.Points.Count);
+            var links = maze.getAllLinks();
+            Assert.AreEqual(3, links.Count);
         }
     }
 }

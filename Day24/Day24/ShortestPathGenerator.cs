@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -15,6 +16,7 @@ namespace Day24
         private readonly HashSet<Point> _nodes;
 
         public int LinkCount => _links.Count;
+        public bool ReturnHome; 
 
         public ShortestPathGenerator()
         {
@@ -62,11 +64,11 @@ namespace Day24
         {
             if (_nodes.Count == 0 ) return -1;
             var nodesRemaining = new HashSet<Point>(_nodes);
-            var paths = EnumerateAllPaths(_start, nodesRemaining);
+            var paths = EnumerateAllPaths(_start, nodesRemaining, ReturnHome?_start:null);
             return GetShortest(paths);
         }
 
-        public List<Queue<T>> EnumerateAllPaths<T>( T currentNode, HashSet<T> nodesRemaining )
+        public List<Queue<T>> EnumerateAllPaths<T>( T currentNode, HashSet<T> nodesRemaining, T start )
         {
             if (nodesRemaining.Contains(currentNode)) nodesRemaining.Remove(currentNode);
 
@@ -75,6 +77,8 @@ namespace Day24
             if (nodesRemaining.Count == 0)
             {
                 var newQueue = new Queue<T>();
+                if (start != null ) newQueue.Enqueue(start);
+                newQueue.Enqueue(currentNode);
                 newQueue.Enqueue(currentNode);
                 returnList.Add( newQueue);
                 return returnList;
@@ -82,7 +86,7 @@ namespace Day24
             foreach (T node in nodesRemaining)
             {
                 var nodesRemainingNew = new HashSet<T>(nodesRemaining);
-                var newList = EnumerateAllPaths(node, nodesRemainingNew);
+                var newList = EnumerateAllPaths(node, nodesRemainingNew, start);
                 foreach (var queue in newList)
                 {
                     queue.Enqueue(currentNode);
@@ -138,5 +142,6 @@ namespace Day24
             return cost;
 
         }
+        
     }
 }

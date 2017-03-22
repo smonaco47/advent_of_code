@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Day12;
 
 namespace Day24
 {
@@ -11,16 +12,16 @@ namespace Day24
     {
         static void Main(string[] args)
         {
-
-            var mazeArray = new[] { "###########",
-                "#0........#",
-                "#.#######.#",
-                "#.#######.#",
-                "#.######..#",
-                "#.......3.#",
-                "###########" };
+            FileImport fi = new FileImport();
+            var mazeArray = fi.ReadFileToArray("input.txt");
+            if (mazeArray.Length == 0) return;
             var maze = new Maze('#', '.', mazeArray);
-            Console.WriteLine(maze.ToString(null));
+            var links = maze.getAllLinks();
+            var path = new ShortestPathGenerator();
+            path.AddLinks(links);
+            path.SetStart(maze.Start);
+            int shortest = path.ShortestPath();
+            Console.Write(shortest);
             Console.ReadKey();
         }
     }
