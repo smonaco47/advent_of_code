@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AdventOfCodeLibrary
+namespace AdventOfCodeLibrary.Path
 {
     public class Coordinate
     {

@@ -23,7 +23,7 @@ namespace AdventOfCodeLibrary
             return random.Next(int.MinValue, int.MaxValue);
         }
         
-        private static Random random = new Random();
+        private static readonly Random random = new Random();
 
         public static object NonZeroNumber()
         {
@@ -34,5 +34,6 @@ namespace AdventOfCodeLibrary
         {
             return random.Next() % ((int.MaxValue/3)+1);
         }
+        
     }
 }

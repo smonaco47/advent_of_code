@@ -1,7 +1,8 @@
-﻿using Moq;
+﻿using AdventOfCodeLibrary.Instructions;
+using Moq;
 using NUnit.Framework;
 
-namespace Day12
+namespace AdventOfCodeLibrary.Tests.Instructions
 {
     // ReSharper disable once InconsistentNaming
     class Computer_should_

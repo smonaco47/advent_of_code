@@ -1,4 +1,4 @@
-﻿namespace Day12
+﻿namespace AdventOfCodeLibrary.Instructions
 {
     class CopyRegisterToRegisterInstruction : IInstruction
     {

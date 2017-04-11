@@ -1,8 +1,8 @@
-﻿using System;
+﻿using AdventOfCodeLibrary.Instructions;
 using Moq;
 using NUnit.Framework;
 
-namespace Day12
+namespace AdventOfCodeLibrary.Tests
 {
     // ReSharper disable once InconsistentNaming
     class FileImport_should
@@ -28,19 +28,6 @@ namespace Day12
             string[] instructions = file.ReadFileToArray(fileName);
             IInstruction[] instructionList = (new InstructionFactory()).CreateForList(instructions);
             Computer computer = new Computer(instructionList);
-            computer.ExecuteAll();
-            Assert.AreEqual(317993, computer['a']);
-        }
-
-        [Test]
-        // End to end
-        public void execute_instructions_from_file_override_c()
-        {
-            string fileName = "C:\\Source\\AdventOfCode\\Day12\\input.txt";
-            FileImport file = new FileImport();
-            string[] instructions = file.ReadFileToArray(fileName);
-            IInstruction[] instructionList = (new InstructionFactory()).CreateForList(instructions);
-            Computer computer = new Computer(instructionList) {['c'] = 1};
             computer.ExecuteAll();
             Assert.AreEqual(317993, computer['a']);
         }

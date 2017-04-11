@@ -1,7 +1,7 @@
-﻿
+﻿using AdventOfCodeLibrary.Instructions;
 using NUnit.Framework;
 
-namespace Day12
+namespace AdventOfCodeLibrary.Tests.Instructions
 {
     // ReSharper disable once InconsistentNaming
     class CopyValueToRegisterInstruction_should

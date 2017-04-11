@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Day12
+namespace AdventOfCodeLibrary.Instructions
 {
     public class Computer
     {

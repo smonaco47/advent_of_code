@@ -1,7 +1,7 @@
-﻿using System;
+﻿using AdventOfCodeLibrary.Instructions;
 using NUnit.Framework;
 
-namespace Day12
+namespace AdventOfCodeLibrary.Tests.Instructions
 {
     // ReSharper disable once InconsistentNaming
     class JumpInstruction_should
@@ -11,15 +11,15 @@ namespace Day12
         {
             var register = Any.Register();
             var jumpDistance = Any.JumpDistance();
-            Computer computer = new MockComputerBuilder()
+            AdventOfCodeLibrary.Instructions.Computer computer = new MockComputerBuilder()
                 .WithDefaultRegisterValue(register, 0)
                 .Build();
-            var initialPosition = computer[Computer.InstructionPointer];
+            var initialPosition = computer[AdventOfCodeLibrary.Instructions.Computer.InstructionPointer];
 
             var instruction = new JumpInstruction(register, jumpDistance);
             instruction.Execute(computer);
 
-            Assert.AreEqual(initialPosition, computer[Computer.InstructionPointer]);
+            Assert.AreEqual(initialPosition, computer[AdventOfCodeLibrary.Instructions.Computer.InstructionPointer]);
         }
 
         [Test]
@@ -28,15 +28,15 @@ namespace Day12
             var register = Any.Register();
             var registerValue = Any.RegisterValue() + 1;
             var jumpDistance = Any.JumpDistance();
-            Computer computer = new MockComputerBuilder()
+            AdventOfCodeLibrary.Instructions.Computer computer = new MockComputerBuilder()
                 .WithDefaultRegisterValue(register, registerValue)
                 .Build();
-            var initialPosition = computer[Computer.InstructionPointer];
+            var initialPosition = computer[AdventOfCodeLibrary.Instructions.Computer.InstructionPointer];
 
             var instruction = new JumpInstruction(register, jumpDistance);
             instruction.Execute(computer);
 
-            Assert.AreEqual(initialPosition + jumpDistance-1, computer[Computer.InstructionPointer]);
+            Assert.AreEqual(initialPosition + jumpDistance-1, computer[AdventOfCodeLibrary.Instructions.Computer.InstructionPointer]);
         }
 
         [Test]
@@ -46,12 +46,12 @@ namespace Day12
             var jumpDistance = Any.JumpDistance();
             var computer = new MockComputerBuilder()
                 .Build();
-            var initialPosition = computer[Computer.InstructionPointer];
+            var initialPosition = computer[AdventOfCodeLibrary.Instructions.Computer.InstructionPointer];
 
             var instruction = new JumpInstruction(1, jumpDistance);
             instruction.Execute(computer);
 
-            Assert.AreEqual(initialPosition + jumpDistance - 1, computer[Computer.InstructionPointer]);
+            Assert.AreEqual(initialPosition + jumpDistance - 1, computer[AdventOfCodeLibrary.Instructions.Computer.InstructionPointer]);
         }
 
     }

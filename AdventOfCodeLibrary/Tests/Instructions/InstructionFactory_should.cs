@@ -1,6 +1,7 @@
-﻿using NUnit.Framework;
+﻿using AdventOfCodeLibrary.Instructions;
+using NUnit.Framework;
 
-namespace Day12
+namespace AdventOfCodeLibrary.Tests.Instructions
 {
     class InstructionFactory_should
     {

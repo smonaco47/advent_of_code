@@ -1,6 +1,7 @@
-﻿using NUnit.Framework;
+﻿using AdventOfCodeLibrary.Instructions;
+using NUnit.Framework;
 
-namespace Day12
+namespace AdventOfCodeLibrary.Tests.Instructions
 {
     // ReSharper disable once InconsistentNaming
     class IncrementInstruction_should

@@ -10,3 +10,5 @@ C:\Source\AdventOfCode\Day12\Day12\bin\Debug\Castle.Core.dll
 C:\Source\AdventOfCode\Day12\Day12\bin\Debug\Moq.dll
 C:\Source\AdventOfCode\Day12\Day12\bin\Debug\Castle.Core.xml
 C:\Source\AdventOfCode\Day12\Day12\bin\Debug\Moq.xml
+C:\Source\AdventOfCode\Day12\Day12\bin\Debug\AdventOfCodeLibrary.dll
+C:\Source\AdventOfCode\Day12\Day12\bin\Debug\AdventOfCodeLibrary.pdb

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using Moq;
 
-namespace Day12
+namespace AdventOfCodeLibrary.Instructions
 {
     class MockComputerBuilder
     {
@@ -22,7 +21,7 @@ namespace Day12
 
         public Computer Build()
         {
-            var computer = new Computer(_instructions);
+            var computer = new AdventOfCodeLibrary.Instructions.Computer(_instructions);
             foreach (var kvp in _defaultRegister)
             {
                 computer[kvp.Key] = kvp.Value;
