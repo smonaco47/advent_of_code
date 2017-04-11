@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using NUnit.Framework.Api;
 
-namespace Day3
+namespace AdventOfCodeLibrary
 {
-    static class TriangleParser
+    public static class TriangleParser
     {
         public static int GetNumberValid(string[] input)
         {

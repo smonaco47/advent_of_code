@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Day3
+namespace AdventOfCodeLibrary
 {
-    class Triangle
+    public class Triangle
     {
         public static bool IsValid(int side1, int side2, int side3)
         {

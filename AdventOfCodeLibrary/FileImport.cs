@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Day12
+namespace AdventOfCodeLibrary
 {
     public class FileImport
     {

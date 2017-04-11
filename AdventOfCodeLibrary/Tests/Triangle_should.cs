@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 
-namespace Day3
+namespace AdventOfCodeLibrary
 {
-    class Triangle_should
+    public class Triangle_should
     {
         [Test]
         public void identify_invalid_triangle()
