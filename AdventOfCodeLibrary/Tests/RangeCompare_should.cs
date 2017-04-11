@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Day20
+namespace AdventOfCodeLibrary.Tests
 {
     // ReSharper disable once InconsistentNaming
     class RangeCompare_should

@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Day20
+namespace AdventOfCodeLibrary
 {
-    class RangeCompare
+    public class RangeCompare
     {
         private SortedDictionary<long, long> _blocked;
         public long Length => _blocked.Count;

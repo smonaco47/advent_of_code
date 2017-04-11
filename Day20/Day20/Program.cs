@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AdventOfCodeLibrary;
 
 namespace Day20
 {
@@ -16,7 +13,7 @@ namespace Day20
             var rangeCompare = new RangeCompare(input, uint.MaxValue);
             rangeCompare.CalculateNonBlocked();
             Console.Write("Lowest : " + rangeCompare.First);
-            Console.Write("IP Count : " + rangeCompare.Count);
+            Console.Write(" IP Count : " + rangeCompare.Count);
             Console.ReadKey();
         }
     }
