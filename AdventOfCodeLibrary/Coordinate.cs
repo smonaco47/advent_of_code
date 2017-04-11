@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventOfCode_16_1_1
+namespace AdventOfCodeLibrary
 {
-    class Coordinate
+    public class Coordinate
     {
         public Coordinate(int y, int x)
         {

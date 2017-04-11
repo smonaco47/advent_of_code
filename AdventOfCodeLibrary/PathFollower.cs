@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventOfCode_16_1_1
+namespace AdventOfCodeLibrary
 {
-    class ShortPathCalc
+    public class PathFollower
     {
         private enum directionEnum
         {
@@ -27,7 +27,7 @@ namespace AdventOfCode_16_1_1
         private int yPos;
         private HashSet<Coordinate> _coordiantes;
 
-        public ShortPathCalc ()
+        public PathFollower ()
         {
             direction = directionEnum.North;
             xPos = 0;
