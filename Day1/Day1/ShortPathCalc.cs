@@ -25,6 +25,7 @@ namespace AdventOfCode_16_1_1
         private directionEnum direction;
         private int xPos;
         private int yPos;
+        private HashSet<Coordinate> _coordiantes;
 
         public ShortPathCalc ()
         {
@@ -33,25 +34,18 @@ namespace AdventOfCode_16_1_1
             yPos = 0;
         }
 
-        public void followPath(string path, bool stopOnRepeat)
+        public void FollowPath(string path, bool stopOnRepeat)
         {
-            Dictionary<int, int> dict = new Dictionary<int, int>();
+            _coordiantes = new HashSet<Coordinate>();
             var stringArray = path.Split(',');
-            foreach (string dirStr in stringArray)
+            foreach (var dirStr in stringArray)
             {
-                moveInDirection(dirStr.Trim());
-                //if (dict.Contains(value)) break;
-                //dict.Add(xPos, yPos);
+                var input = dirStr.Trim();
+                Rotate(input.Substring(0, 1));
+                if (!Move(Convert.ToInt32(input.Substring(1)))) break;
             }
         }
-
-
-
-        private void moveInDirection(string dirStr)
-        {
-            Rotate(dirStr.Substring(0,1));
-            Move(Convert.ToInt32(dirStr.Substring(1)));
-        }
+        
 
         private void Rotate(string newDirection)
         {
@@ -71,28 +65,47 @@ namespace AdventOfCode_16_1_1
             Enum.TryParse(newD.ToString(), out direction);
         }
 
-        private void Move(int steps)
+        private bool Move( int steps )
+        {
+            bool newLocation = true;
+            for (int i = 0; i < steps && newLocation; i++)
+            {
+                newLocation= MoveOneStep();
+            }
+            return newLocation;
+        }
+
+        private bool MoveOneStep()
         {
             switch (this.direction)
             {
                 case directionEnum.North:
-                    yPos += steps;
+                    yPos += 1;
                     break;
                 case directionEnum.East:
-                    xPos += steps;
+                    xPos += 1;
                     break;
                 case directionEnum.South:
-                    yPos -= steps;
+                    yPos -= 1;
                     break;
                 case directionEnum.West:
-                    xPos -= steps;
+                    xPos -= 1;
                     break;
                 default:
                     break;
             }
+            return LogCoordinate(xPos, yPos);
         }
 
-        public int distanceFromStart()
+        private bool LogCoordinate( int xPos, int yPos )
+        {
+            var newCoordinate = new Coordinate(this.yPos, xPos);
+            if (_coordiantes.Contains(newCoordinate)) return false;
+            _coordiantes.Add(newCoordinate);
+            return true;
+        }
+
+        public int DistanceFromStart()
         {
             return Math.Abs(xPos) + Math.Abs(yPos);
         }
