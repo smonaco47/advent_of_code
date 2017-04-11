@@ -54,6 +54,7 @@
     <Compile Include="Instructions\IncrementInstruction.cs" />
     <Compile Include="Path\Link.cs" />
     <Compile Include="Path\Maze.cs" />
+    <Compile Include="Path\PathFollower.cs" />
     <Compile Include="Path\Point.cs" />
     <Compile Include="Path\ShortestPathGenerator.cs" />
     <Compile Include="RangeCompare.cs" />
