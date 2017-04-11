@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using AdventOfCodeLibrary;
+using AdventOfCodeLibrary.Path;
 
 namespace AdventOfCode_16_1_1
 {
