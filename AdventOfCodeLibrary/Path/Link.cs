@@ -1,9 +1,6 @@
-﻿using System.Collections.Generic;
-
-//TODO this whole class may be pointless
-namespace Day24
+﻿namespace AdventOfCodeLibrary.Path
 {
-    class Link
+    public class Link
     { 
 
         public Point Start { get; }

@@ -1,6 +1,7 @@
-﻿using NUnit.Framework;
+﻿using AdventOfCodeLibrary.Path;
+using NUnit.Framework;
 
-namespace Day24
+namespace AdventOfCodeLibrary.Tests.Path
 {
     class Point_should
     {

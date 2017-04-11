@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Day24
+namespace AdventOfCodeLibrary.Path
 {
-    class Maze
+    public class Maze
     {
         private char _wall;
         private char _open;
@@ -54,7 +51,7 @@ namespace Day24
 
         }
         
-        internal List<Link> getAllLinks()
+        public List<Link> getAllLinks()
         {
             var links = new List<Link>();
             for ( int i = 0; i < Points.Count-1; i++)

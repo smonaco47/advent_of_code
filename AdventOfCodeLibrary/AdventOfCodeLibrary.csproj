@@ -30,10 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Castle.Core.dll</HintPath>
-    </Reference>
     <Reference Include="Moq, Version=4.7.1.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Moq.dll</HintPath>
@@ -56,7 +52,15 @@
     <Compile Include="Instructions\Computer.cs" />
     <Compile Include="Instructions\IInstruction.cs" />
     <Compile Include="Instructions\IncrementInstruction.cs" />
+    <Compile Include="Path\Link.cs" />
+    <Compile Include="Path\Maze.cs" />
+    <Compile Include="Path\Point.cs" />
+    <Compile Include="Path\ShortestPathGenerator.cs" />
     <Compile Include="RangeCompare.cs" />
+    <Compile Include="Tests\Path\Link_should.cs" />
+    <Compile Include="Tests\Path\Maze_should.cs" />
+    <Compile Include="Tests\Path\Point_should.cs" />
+    <Compile Include="Tests\Path\ShortestPathGenerator_should.cs" />
     <Compile Include="Tests\RangeCompare_should.cs" />
     <Compile Include="Tests\Instructions\IncrementInstruction_should.cs" />
     <Compile Include="Instructions\InstructionFactory.cs" />
@@ -74,7 +78,6 @@
     <Compile Include="Instructions\DecrementInstruction.cs" />
     <Compile Include="Tests\Instructions\DecrementInstruction_should.cs" />
     <Compile Include="FileImport.cs" />
-    <Compile Include="Path\PathFollower.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\FileImport_should.cs" />
     <Compile Include="Tests\TriangleParser_should.cs" />
@@ -82,9 +85,7 @@
     <Compile Include="Triangle.cs" />
     <Compile Include="TriangleParser.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Tests\Path\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
