@@ -3,11 +3,11 @@
     public class Link
     { 
 
-        public Point Start { get; }
-        public Point End { get; }
+        public Coordinate Start { get; }
+        public Coordinate End { get; }
         public int Length { get; set; }
 
-        public Link(Point start, Point end, int length)
+        public Link(Coordinate start, Coordinate end, int length)
         {
             this.Start = start;
             this.End = end;

@@ -44,9 +44,9 @@ namespace AdventOfCodeLibrary
             return GetRandom().Next();
         }
 
-        public static Point Point()
+        public static Coordinate Coordinate()
         {
-            return new Point(GridLocation(), GridLocation());
+            return new Coordinate(GridLocation(), GridLocation());
         }
 
         public static int Length()
@@ -56,7 +56,7 @@ namespace AdventOfCodeLibrary
 
         public static Link Link()
         {
-            return new Link(Any.Point(), Any.Point(), Any.Length());
+            return new Link(Any.Coordinate(), Any.Coordinate(), Any.Length());
         }
 
     }

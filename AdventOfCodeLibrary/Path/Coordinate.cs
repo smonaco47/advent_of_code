@@ -4,10 +4,10 @@ namespace AdventOfCodeLibrary.Path
 {
     public class Coordinate
     {
-        public Coordinate(int y, int x)
+        public Coordinate(int x, int y)
         {
-            Y = y;
             X = x;
+            Y = y;
         }
 
         public int X { get; }

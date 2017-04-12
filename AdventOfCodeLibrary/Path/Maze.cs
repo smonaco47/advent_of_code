@@ -13,8 +13,8 @@ namespace AdventOfCodeLibrary.Path
         public int Height { get; internal set; }
         public int Width { get; internal set; }
 
-        public List<Point> Points { get; internal set; }
-        public Point Start { get; set; }
+        public List<Coordinate> Points { get; internal set; }
+        public Coordinate Start { get; set; }
 
         public Maze(char wall, char open, string[] mazeArray)
         {
@@ -22,7 +22,7 @@ namespace AdventOfCodeLibrary.Path
             this._open = open;
             this._start = '0';
 
-            Points = new List<Point>();
+            Points = new List<Coordinate>();
 
             StoreMaze(mazeArray);
         }
@@ -41,7 +41,7 @@ namespace AdventOfCodeLibrary.Path
                     _maze[i, j] = mazeElement;
                     if (IsEndpoint(mazeElement))
                     {
-                        var point = new Point(i, j);
+                        var point = new Coordinate(i, j);
                         Points.Add(point);
                         if (mazeElement == _start) Start = point;
                     }
@@ -64,13 +64,13 @@ namespace AdventOfCodeLibrary.Path
             return links;
         }
 
-        public Link ShortestPathBetween(Point point1, Point point2)
+        public Link ShortestPathBetween(Coordinate point1, Coordinate point2)
         {
             var mazeCopy = MazeCopy();
             var found = false;
-            var visitedHash = new HashSet<Point>();
-            var currentStack = new Stack<Point>();
-            var nextStack = new Stack<Point>();
+            var visitedHash = new HashSet<Coordinate>();
+            var currentStack = new Stack<Coordinate>();
+            var nextStack = new Stack<Coordinate>();
             var count = 0;
             var foundCount = -1;
             currentStack.Push(point1);
@@ -79,7 +79,7 @@ namespace AdventOfCodeLibrary.Path
             {
                 while (currentStack.Count != 0)
                 {
-                    Point point = currentStack.Pop();
+                    Coordinate point = currentStack.Pop();
                     var value = GetPointValue(point);
                     if (IsBlocking(value)) continue; // Dead end
                     if (visitedHash.Contains(point)) continue; //Already visited
@@ -102,27 +102,27 @@ namespace AdventOfCodeLibrary.Path
             return new Link(point1, point2, foundCount);
         }
 
-        private void AddNeighbors(Point point, Stack<Point> nextStack)
+        private void AddNeighbors(Coordinate point, Stack<Coordinate> nextStack)
         {
             if (point.X > 0)
             {
-                nextStack.Push(new Point(point.X-1, point.Y));
+                nextStack.Push(new Coordinate(point.X-1, point.Y));
             }
             if (point.X < Width-1)
             {
-                nextStack.Push(new Point(point.X+1, point.Y));
+                nextStack.Push(new Coordinate(point.X+1, point.Y));
             }
             if (point.Y > 0)
             {
-                nextStack.Push(new Point(point.X, point.Y-1));
+                nextStack.Push(new Coordinate(point.X, point.Y-1));
             }
             if (point.Y < Width-1)
             {
-                nextStack.Push(new Point(point.X, point.Y+1));
+                nextStack.Push(new Coordinate(point.X, point.Y+1));
             }
         }
 
-        private char GetPointValue(Point point)
+        private char GetPointValue(Coordinate point)
         {
             return _maze[point.X, point.Y];
         }

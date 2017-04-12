@@ -62,9 +62,9 @@ namespace AdventOfCodeLibrary.Tests.Path
         public void find_shortest_path_length_count_with_multiple_locations()
         {
             var pathGenerator = new ShortestPathGenerator();
-            var point1 = new Point(0,0);
-            var point2 = new Point(1,0);
-            var point3 = new Point(2,0);
+            var point1 = new Coordinate(0,0);
+            var point2 = new Coordinate(1,0);
+            var point3 = new Coordinate(2,0);
             var link1 = new Link(point1, point2, 15);
             var link2 = new Link(point1, point3, 5);
             var link3 = new Link(point2, point3, 5);
@@ -78,9 +78,9 @@ namespace AdventOfCodeLibrary.Tests.Path
         public void find_shortest_path_length_count_return_to_home()
         {
             var pathGenerator = new ShortestPathGenerator();
-            var point1 = new Point(0, 0);
-            var point2 = new Point(1, 0);
-            var point3 = new Point(2, 0);
+            var point1 = new Coordinate(0, 0);
+            var point2 = new Coordinate(1, 0);
+            var point3 = new Coordinate(2, 0);
             var link1 = new Link(point1, point2, 15);
             var link2 = new Link(point1, point3, 5);
             var link3 = new Link(point2, point3, 5);
@@ -95,10 +95,10 @@ namespace AdventOfCodeLibrary.Tests.Path
         public void find_shortest_path_when_sides_missing()
         {
             var pathGenerator = new ShortestPathGenerator();
-            var point1 = new Point(0, 0);
-            var point2 = new Point(1, 0);
-            var point3 = new Point(2, 0);
-            var point4 = new Point(3, 0);
+            var point1 = new Coordinate(0, 0);
+            var point2 = new Coordinate(1, 0);
+            var point3 = new Coordinate(2, 0);
+            var point4 = new Coordinate(3, 0);
             var link1 = new Link(point1, point2, 5);
             var link2 = new Link(point1, point3, 10);
             var link3 = new Link(point1, point4, 15);
@@ -130,16 +130,16 @@ namespace AdventOfCodeLibrary.Tests.Path
         public void create_all_permutations_of_points()
         {
             var pathGenerator = new ShortestPathGenerator();
-            var points = new HashSet<Point>();
+            var points = new HashSet<Coordinate>();
             for (var i = 0; i < 2; i++)
             {
                 for (var j = 0; j < 2; j++)
                 {
-                    points.Add(new Point(i, j));
+                    points.Add(new Coordinate(i, j));
                 }
             }
 
-            var retVal = pathGenerator.EnumerateAllPaths<Point>(new Point(0, 0), points, null);
+            var retVal = pathGenerator.EnumerateAllPaths<Coordinate>(new Coordinate(0, 0), points, null);
             Assert.AreEqual(6, retVal.Count);
         }
 

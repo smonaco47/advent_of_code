@@ -6,9 +6,9 @@ namespace AdventOfCodeLibrary.Path
     public class ShortestPathGenerator
     {
         private readonly Dictionary<Link, int> _links;
-        private Point _start;
+        private Coordinate _start;
         private Queue<Link> _shortestPath;
-        private readonly HashSet<Point> _nodes;
+        private readonly HashSet<Coordinate> _nodes;
 
         public int LinkCount => _links.Count;
         public bool ReturnHome; 
@@ -17,7 +17,7 @@ namespace AdventOfCodeLibrary.Path
         {
             _links = new Dictionary<Link, int>();
             _shortestPath = new Queue<Link>();
-            _nodes = new HashSet<Point>();
+            _nodes = new HashSet<Coordinate>();
         }
         public int ShortestPathLength
         { 
@@ -27,7 +27,7 @@ namespace AdventOfCodeLibrary.Path
             }
         }
 
-        public void SetStart(Point start)
+        public void SetStart(Coordinate start)
         {
             _start = start;
         }
@@ -58,7 +58,7 @@ namespace AdventOfCodeLibrary.Path
         public int ShortestPath()
         {
             if (_nodes.Count == 0 ) return -1;
-            var nodesRemaining = new HashSet<Point>(_nodes);
+            var nodesRemaining = new HashSet<Coordinate>(_nodes);
             var paths = EnumerateAllPaths(_start, nodesRemaining, ReturnHome?_start:null);
             return GetShortest(paths);
         }
@@ -90,7 +90,7 @@ namespace AdventOfCodeLibrary.Path
             return returnList;
         }
 
-        private int GetShortest(List<Queue<Point>> paths)
+        private int GetShortest(List<Queue<Coordinate>> paths)
         {
             int shortest = int.MaxValue;
             foreach (var path in paths)
@@ -106,7 +106,7 @@ namespace AdventOfCodeLibrary.Path
             return shortest;
         }
 
-        private int ComputeCost(Queue<Point> path, out Queue<Link> linksUsed)
+        private int ComputeCost(Queue<Coordinate> path, out Queue<Link> linksUsed)
         {
             var cost = 0;
             linksUsed = new Queue<Link>();

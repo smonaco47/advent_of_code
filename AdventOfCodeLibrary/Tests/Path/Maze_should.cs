@@ -27,7 +27,7 @@ namespace AdventOfCodeLibrary.Tests.Path
         public void initialize_to_start_at_zero()
         {
             var maze = InitializeArray();
-            Assert.AreEqual(maze.Start, new Point(9,3));
+            Assert.AreEqual(maze.Start, new Coordinate(9,3));
         }
 
         [Test]
@@ -43,7 +43,7 @@ namespace AdventOfCodeLibrary.Tests.Path
         {
             var maze = InitializeArray();
 
-            var shortPath = maze.ShortestPathBetween(new Point(1, 1), new Point(9, 3)); // 0 and 3 above
+            var shortPath = maze.ShortestPathBetween(new Coordinate(1, 1), new Coordinate(9, 3)); // 0 and 3 above
 
             Assert.AreEqual(10, shortPath.Length);
         }

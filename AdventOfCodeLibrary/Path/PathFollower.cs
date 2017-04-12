@@ -96,7 +96,7 @@ namespace AdventOfCodeLibrary.Path
 
         private bool LogCoordinate( int xPos, int yPos )
         {
-            var newCoordinate = new Coordinate(this.yPos, xPos);
+            var newCoordinate = new Coordinate(this.xPos, yPos);
             if (_coordiantes.Contains(newCoordinate)) return false;
             _coordiantes.Add(newCoordinate);
             return true;

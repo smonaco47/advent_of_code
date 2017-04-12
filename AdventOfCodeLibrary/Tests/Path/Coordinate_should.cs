@@ -3,14 +3,14 @@ using NUnit.Framework;
 
 namespace AdventOfCodeLibrary.Tests.Path
 {
-    class Point_should
+    class Coordinate_should
     {
         [Test]
         public void initialize_horizontal()
         {
             var initialX = Any.GridLocation();
             var initialY = Any.GridLocation();
-            var point = new Point(initialX,initialY);
+            var point = new Coordinate(initialX,initialY);
 
             Assert.AreEqual(initialX, point.X);
         }
@@ -20,7 +20,7 @@ namespace AdventOfCodeLibrary.Tests.Path
         {
             var initialX = Any.GridLocation();
             var initialY = Any.GridLocation();
-            var point = new Point(initialX, initialY);
+            var point = new Coordinate(initialX, initialY);
             
             Assert.AreEqual(initialY, point.Y);
         }

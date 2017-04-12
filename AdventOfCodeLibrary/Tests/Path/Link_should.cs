@@ -8,8 +8,8 @@ namespace AdventOfCodeLibrary.Tests.Path
         [Test]
         public void provide_start_point()
         {
-            var start = Any.Point();
-            var newPath = new Link(start, Any.Point(), Any.Length());
+            var start = Any.Coordinate();
+            var newPath = new Link(start, Any.Coordinate(), Any.Length());
 
             Assert.AreEqual(start, newPath.Start);
         }
@@ -18,8 +18,8 @@ namespace AdventOfCodeLibrary.Tests.Path
         public void provide_end_point()
         {
            
-            var end = Any.Point();
-            var newPath = new Link(Any.Point(), end, Any.Length());
+            var end = Any.Coordinate();
+            var newPath = new Link(Any.Coordinate(), end, Any.Length());
 
             Assert.AreEqual(end, newPath.End);
         }
@@ -28,7 +28,7 @@ namespace AdventOfCodeLibrary.Tests.Path
         public void provide_distance()
         {
             var length = Any.Length();
-            var newPath = new Link(Any.Point(), Any.Point(), length);
+            var newPath = new Link(Any.Coordinate(), Any.Coordinate(), length);
 
             Assert.AreEqual(length, newPath.Length);
         }
