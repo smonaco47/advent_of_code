@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
+using AdventOfCodeLibrary.Path;
 
 namespace AdventOfCode_16_1_1
 {
@@ -11,10 +8,10 @@ namespace AdventOfCode_16_1_1
     {
         private static void Main(string[] args)
         {
-            var spc = new ShortPathCalc();
+            var pathFollower = new PathFollower();
             var path = File.ReadAllText("input1.txt");
-            spc.FollowPath(path, true);
-            Console.Write(spc.DistanceFromStart());
+            pathFollower.FollowPath(path, true);
+            Console.Write(pathFollower.DistanceFromStart());
             Console.ReadKey();
         }
     }

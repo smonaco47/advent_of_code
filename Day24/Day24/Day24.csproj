@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AdventOfCodeLibrary">
+      <HintPath>..\..\AdventOfCodeLibrary\bin\Debug\AdventOfCodeLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\..\..\..\..\NUnit.Framework-3.6.1\bin\net-4.5\nunit.framework.dll</HintPath>
     </Reference>
@@ -46,18 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Any.cs" />
-    <Compile Include="FileImport.cs" />
-    <Compile Include="Maze.cs" />
-    <Compile Include="Maze_should.cs" />
-    <Compile Include="Link.cs" />
-    <Compile Include="Link_should.cs" />
-    <Compile Include="Point.cs" />
-    <Compile Include="Point_should.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ShortestPathGenerator.cs" />
-    <Compile Include="ShortestPathGenerator_should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

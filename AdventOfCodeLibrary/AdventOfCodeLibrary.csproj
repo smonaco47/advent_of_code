@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{157A5BA5-FD8C-4630-A689-ACFB7F064C88}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AdventOfCodeLibrary</RootNamespace>
+    <AssemblyName>AdventOfCodeLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Moq, Version=4.7.8.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.7.8\lib\net45\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.6.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Any.cs" />
+    <Compile Include="Instructions\Computer.cs" />
+    <Compile Include="Instructions\IInstruction.cs" />
+    <Compile Include="Instructions\IncrementInstruction.cs" />
+    <Compile Include="Path\Link.cs" />
+    <Compile Include="Path\Maze.cs" />
+    <Compile Include="Path\PathFollower.cs" />
+    <Compile Include="Path\ShortestPathGenerator.cs" />
+    <Compile Include="RangeCompare.cs" />
+    <Compile Include="Tests\Path\Link_should.cs" />
+    <Compile Include="Tests\Path\Maze_should.cs" />
+    <Compile Include="Tests\Path\Coordinate_should.cs" />
+    <Compile Include="Tests\Path\ShortestPathGenerator_should.cs" />
+    <Compile Include="Tests\RangeCompare_should.cs" />
+    <Compile Include="Tests\Instructions\IncrementInstruction_should.cs" />
+    <Compile Include="Instructions\InstructionFactory.cs" />
+    <Compile Include="Tests\Instructions\InstructionFactory_should.cs" />
+    <Compile Include="Instructions\JumpInstruction.cs" />
+    <Compile Include="Tests\Instructions\JumpInstruction_should.cs" />
+    <Compile Include="Instructions\MockComputerBuilder.cs" />
+    <Compile Include="Instructions\NullInstruction.cs" />
+    <Compile Include="Tests\Instructions\Computer_should_.cs" />
+    <Compile Include="Path\Coordinate.cs" />
+    <Compile Include="Instructions\CopyRegisterToRegisterInstruction.cs" />
+    <Compile Include="Tests\Instructions\CopyRegisterToRegisterInstruction_should.cs" />
+    <Compile Include="Instructions\CopyValueToRegisterInstruction.cs" />
+    <Compile Include="Tests\Instructions\CopyValueToRegisterInstruction_should.cs" />
+    <Compile Include="Instructions\DecrementInstruction.cs" />
+    <Compile Include="Tests\Instructions\DecrementInstruction_should.cs" />
+    <Compile Include="FileImport.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\FileImport_should.cs" />
+    <Compile Include="Tests\TriangleParser_should.cs" />
+    <Compile Include="Tests\Triangle_should.cs" />
+    <Compile Include="Triangle.cs" />
+    <Compile Include="TriangleParser.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
