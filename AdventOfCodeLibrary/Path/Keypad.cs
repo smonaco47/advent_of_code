@@ -19,11 +19,11 @@ namespace AdventOfCodeLibrary.Path
             this.MaxValue = width * height;
             var value = 1;
             _keys = new int[Width, Height];
-            for (int i = 0; i < Width; i++)
+            for (int i = 0; i < Height; i++)
             {
-                for (int j = 0; j < Height; j++)
+                for (int j = 0; j < Width; j++)
                 {
-                    _keys[i, j] = value++;
+                    _keys[j, i] = value++;
                 }
             }
         }

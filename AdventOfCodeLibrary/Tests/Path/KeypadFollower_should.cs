@@ -32,12 +32,13 @@ namespace AdventOfCodeLibrary.Tests.Path
         [Test]
         public void reset_the_start_position()
         {
-            string input = "ULL";
+            string input = "LURDL";
             var keypad = new Mock<Keypad>();
-            var keypadFollower = new KeypadFollower(new Coordinate(1, 1), keypad.Object);
+            var keypadFollower = new KeypadFollower(new Coordinate(1, 2), keypad.Object);
             keypadFollower.FollowPath(input, false);
-            keypadFollower.resetStart(new Coordinate(0,0));
-            Assert.AreEqual(new Coordinate(0, 0), keypadFollower.CurrentPosition);
+            Assert.AreEqual(1, keypadFollower.CurrentPosition.X);
+            Assert.AreEqual(2, keypadFollower.CurrentPosition.Y);
+            Assert.AreEqual(new Coordinate(1,2), keypadFollower.CurrentPosition);
         }
     }
 }

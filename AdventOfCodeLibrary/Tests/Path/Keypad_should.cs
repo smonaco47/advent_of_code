@@ -24,6 +24,15 @@ namespace AdventOfCodeLibrary.Tests.Path
             Assert.AreEqual(width*height, keypad.MaxValue);
         }
 
+        [Test]
+        public void initialize_with_correct_number_arrangement()
+        {
+            int width = Any.keypadLength();
+            int height = Any.keypadLength();
+            var keypad = new Keypad(width, height);
+            Assert.AreEqual(width * height-1, keypad.getValue(new Coordinate(width-2, height-1)));
+        }
+
 
         [Test]
         public void read_coordinate_value()

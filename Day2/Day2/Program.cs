@@ -19,7 +19,7 @@ namespace Day2
         public static void Part1()
         {
             var fileIo = new FileImport();
-            var inputStrings = fileIo.ReadFileToArray("../../test.txt");
+            var inputStrings = fileIo.ReadFileToArray("../../input.txt");
             var keypadFollower = new KeypadFollower(new Coordinate(1,1), new Keypad());
             foreach (string str in inputStrings)
             {
