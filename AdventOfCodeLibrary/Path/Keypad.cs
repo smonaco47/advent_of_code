@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace AdventOfCodeLibrary.Path
 {
-    class Keypad
+    public class Keypad
     {
         private int[,] _keys;
+
+        public Keypad() : this(3, 3){}
 
         public Keypad(int width, int height)
         {

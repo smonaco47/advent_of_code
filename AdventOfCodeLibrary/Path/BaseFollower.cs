@@ -11,7 +11,7 @@ namespace AdventOfCodeLibrary.Path
         protected HashSet<Coordinate> _coordiantes;
         protected bool _stopOnRepeat;
 
-        protected enum DirectionEnum
+        public enum DirectionEnum
         {
             North,
             East,
@@ -25,17 +25,17 @@ namespace AdventOfCodeLibrary.Path
         {
             _coordiantes = new HashSet<Coordinate>();
             _stopOnRepeat = stopOnRepeat;
-            var stringArray = path.Split(',');
-            foreach (var dirStr in stringArray)
+            var steps = SplitPathString(path);
+            foreach (var step in steps)
             {
-                var input = dirStr.Trim();
-                Rotate(input.Substring(0, 1));
-                if (!Move(Convert.ToInt32(input.Substring(1)))) break;
+                Rotate(step.Rotation, step.Direction);
+                if (!Move(step.Steps)) break;
             }
         }
 
-        protected abstract void Rotate(string newDirection);
+        protected abstract void Rotate(char rotation, DirectionEnum direction);
         protected abstract bool IsValidCoordinate(int xPos, int yPos);
+        protected abstract List<Step> SplitPathString(string input);
 
         private bool Move(int steps)
         {
@@ -53,13 +53,13 @@ namespace AdventOfCodeLibrary.Path
             switch (this._direction)
             {
                 case DirectionEnum.North:
-                    newY += 1;
+                    newY -= 1;
                     break;
                 case DirectionEnum.East:
                     newX += 1;
                     break;
                 case DirectionEnum.South:
-                    newY -= 1;
+                    newY += 1;
                     break;
                 case DirectionEnum.West:
                     newX -= 1;
