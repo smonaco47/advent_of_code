@@ -59,5 +59,9 @@ namespace AdventOfCodeLibrary
             return new Link(Any.Coordinate(), Any.Coordinate(), Any.Length());
         }
 
+        public static int keypadLength()
+        {
+            return GetRandom().Next()%1000;
+        }
     }
 }

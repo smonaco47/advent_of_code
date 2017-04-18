@@ -3,108 +3,57 @@ using System.Collections.Generic;
 
 namespace AdventOfCodeLibrary.Path
 {
-    public class PathFollower
+    public class PathFollower : BaseFollower
     {
-        private enum directionEnum
+        public PathFollower()
         {
-            North,
-            East,
-            South,
-            West
+            _direction = DirectionEnum.North;
+            _xPos = 0;
+            _yPos = 0;
         }
 
-        private enum Rotations
+        public double DistanceFromStart()
         {
-            Left,
-            Right
+            return Math.Abs(_xPos) + Math.Abs(_yPos);
         }
 
-        private directionEnum direction;
-        private int xPos;
-        private int yPos;
-        private HashSet<Coordinate> _coordiantes;
-
-        public PathFollower ()
+        protected override void Rotate(char rotation, DirectionEnum direction)
         {
-            direction = directionEnum.North;
-            xPos = 0;
-            yPos = 0;
-        }
-
-        public void FollowPath(string path, bool stopOnRepeat)
-        {
-            _coordiantes = new HashSet<Coordinate>();
-            var stringArray = path.Split(',');
-            foreach (var dirStr in stringArray)
+            int newD = Convert.ToInt32(_direction);
+            switch (rotation)
             {
-                var input = dirStr.Trim();
-                Rotate(input.Substring(0, 1));
-                if (!Move(Convert.ToInt32(input.Substring(1)))) break;
-            }
-        }
-        
-
-        private void Rotate(string newDirection)
-        {
-            int newD = Convert.ToInt32(direction);
-            switch (newDirection)
-            {
-                case "R":
+                case 'R':
                     newD += 1;
                     break;
-                case "L":
+                case 'L':
                     newD += 3;
                     break;
                 default:
                     break;
             }
             newD %= 4;
-            Enum.TryParse(newD.ToString(), out direction);
+            Enum.TryParse(newD.ToString(), out _direction);
         }
 
-        private bool Move( int steps )
+        protected override bool IsValidCoordinate(int xPos, int yPos)
         {
-            bool newLocation = true;
-            for (int i = 0; i < steps && newLocation; i++)
-            {
-                newLocation= MoveOneStep();
-            }
-            return newLocation;
-        }
-
-        private bool MoveOneStep()
-        {
-            switch (this.direction)
-            {
-                case directionEnum.North:
-                    yPos += 1;
-                    break;
-                case directionEnum.East:
-                    xPos += 1;
-                    break;
-                case directionEnum.South:
-                    yPos -= 1;
-                    break;
-                case directionEnum.West:
-                    xPos -= 1;
-                    break;
-                default:
-                    break;
-            }
-            return LogCoordinate(xPos, yPos);
-        }
-
-        private bool LogCoordinate( int xPos, int yPos )
-        {
-            var newCoordinate = new Coordinate(this.xPos, yPos);
-            if (_coordiantes.Contains(newCoordinate)) return false;
-            _coordiantes.Add(newCoordinate);
             return true;
         }
 
-        public int DistanceFromStart()
+        protected override List<Step> SplitPathString(string input)
         {
-            return Math.Abs(xPos) + Math.Abs(yPos);
+            int numSteps;
+            char rotation;
+            var stringArray = input.Split(',');
+            var steps = new List<Step>();
+            foreach (var dirStr in stringArray)
+            {
+                var trimmed = dirStr.Trim();
+                rotation = trimmed.Substring(0, 1)[0];
+                numSteps = Convert.ToInt32(trimmed.Substring(1));
+                steps.Add(new Step() {Rotation=rotation, Steps = numSteps});
+            }
+            return steps;
         }
     }
 }
