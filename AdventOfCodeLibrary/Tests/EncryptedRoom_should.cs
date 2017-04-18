@@ -53,5 +53,21 @@ namespace AdventOfCodeLibrary.Tests
             var room = new EncryptedRoom(input);
             Assert.IsFalse(room.IsValid());
         }
+
+        [Test]
+        public void decrypt_name()
+        {
+            string input = "qzmt-zixmtkozy-ivhz-343[aaaaa]";
+            var room = new EncryptedRoom(input);
+            Assert.AreEqual("very encrypted name", room.DecryptedName);
+        }
+
+        [Test]
+        public void decrypt_name_by_one()
+        {
+            string input = "abcd-efgh-ijkl-mnop-qrst-uvwxyz-1[aaaaa]";
+            var room = new EncryptedRoom(input);
+            Assert.AreEqual("bcde fghi jklm nopq rstu vwxyza", room.DecryptedName);
+        }
     }
 }

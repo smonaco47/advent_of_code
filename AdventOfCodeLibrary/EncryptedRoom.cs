@@ -43,11 +43,33 @@ namespace AdventOfCodeLibrary
             this.Checksum = input.Substring(indexOfChecksum, CHECKSUM_LENGTH);
         }
 
-        public string Name { get; }
-        public int SectorId { get; }
+        public string Name
+        {
+            get { return this._encryptedName; }
+            private set
+            {
+                this._encryptedName = value;
+                 DecryptName();
+            }
+        }
+
+
+
+        public int SectorId
+        {
+            get { return this._sectorId; }
+            private set
+            {
+                this._sectorId = value;
+                DecryptName();
+            }
+        }
         public string Checksum { get; }
-        
+        public string DecryptedName { get; private set; }
+
         private List<FrequencyPair> _frequency = new List<FrequencyPair>();
+        private string _encryptedName;
+        private int _sectorId;
 
         public bool IsValid()
         {
@@ -78,6 +100,27 @@ namespace AdventOfCodeLibrary
             for (int i = 0; i < 5; i++)
                 checksum.Append((char)_frequency[i].name);
             return checksum.ToString();
+        }
+
+
+        private void DecryptName()
+        {
+            var newString = new StringBuilder(); 
+            string temp = _encryptedName;
+            for (int i = 0; i < _encryptedName.Length; i++ )
+            {
+                var c = _encryptedName[i];
+                if (c == '-')
+                {
+                    newString.Append(' ');
+                    continue;
+                }
+                var intChar = (int) c;
+                var intZ = (int) 'z';
+                var intA = (int) 'a';
+                newString.Append((char) (((intChar + SectorId - intA) % (intZ - intA + 1)) + intA));
+            }
+            DecryptedName = newString.ToString();
         }
     }
 }
