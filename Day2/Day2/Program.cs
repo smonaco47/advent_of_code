@@ -14,13 +14,33 @@ namespace Day2
         static void Main(string[] args)
         {
             Part1();
+            Console.WriteLine();
+            Part2();
+            Console.ReadKey();
         }
 
         public static void Part1()
         {
             var fileIo = new FileImport();
+            var inputStrings = fileIo.ReadFileToArray("../../test.txt");
+            var keypad = new Keypad();
+            keypad.PrintKeypad();
+
+            var keypadFollower = new KeypadFollower(new Coordinate(1,1),keypad );
+            foreach (string str in inputStrings)
+            {
+                keypadFollower.FollowPath(str, false);
+                Console.Write(keypadFollower.CurrentValue());
+            }
+        }
+
+        public static void Part2()
+        {
+            var fileIo = new FileImport();
             var inputStrings = fileIo.ReadFileToArray("../../input.txt");
-            var keypadFollower = new KeypadFollower(new Coordinate(1,1), new Keypad());
+            var keypad = Keypad.DiamondKeypad();
+            keypad.PrintKeypad();
+            var keypadFollower = new KeypadFollower(new Coordinate(0, 3), keypad);
             foreach (string str in inputStrings)
             {
                 keypadFollower.FollowPath(str, false);

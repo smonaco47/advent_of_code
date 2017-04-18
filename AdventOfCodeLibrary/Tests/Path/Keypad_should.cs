@@ -30,7 +30,7 @@ namespace AdventOfCodeLibrary.Tests.Path
             int width = Any.keypadLength();
             int height = Any.keypadLength();
             var keypad = new Keypad(width, height);
-            Assert.AreEqual(width * height-1, keypad.getValue(new Coordinate(width-2, height-1)));
+            Assert.AreEqual((width * height-1).ToString(), keypad.getValue(new Coordinate(width-2, height-1)));
         }
 
 
@@ -40,18 +40,25 @@ namespace AdventOfCodeLibrary.Tests.Path
             int width = Any.keypadLength();
             int height = Any.keypadLength();
             var keypad = new Keypad(width, height);
-            Assert.AreEqual(1, keypad.getValue(new Coordinate(0, 0)));
-            Assert.AreEqual(width * height, keypad.getValue(new Coordinate(width - 1, height - 1)));
+            Assert.AreEqual("1", keypad.getValue(new Coordinate(0, 0)));
+            Assert.AreEqual((width * height).ToString(), keypad.getValue(new Coordinate(width - 1, height - 1)));
         }
 
         [Test]
-        public void return_neg_one_when_invalid_coordinate()
+        public void return_null_when_invalid_coordinate()
         {
             int width = Any.keypadLength();
             int height = Any.keypadLength();
             var keypad = new Keypad(width, height);
-            Assert.AreEqual(-1, keypad.getValue(new Coordinate(width, height - 1)));
-            Assert.AreEqual(-1, keypad.getValue(new Coordinate(width - 1, height)));
+            Assert.AreEqual("", keypad.getValue(new Coordinate(width, height - 1)));
+            Assert.AreEqual("", keypad.getValue(new Coordinate(width - 1, height)));
+        }
+
+        [Test]
+        public void initialize_diamond()
+        {
+            var keypad = Keypad.DiamondKeypad();
+            Assert.AreEqual("5",keypad.getValue(new Coordinate(0,2)));
         }
     }
 }

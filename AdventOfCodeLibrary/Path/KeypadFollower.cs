@@ -20,7 +20,7 @@ namespace AdventOfCodeLibrary.Path
             _yPos = start.Y;
         }
 
-        public int CurrentValue()
+        public string CurrentValue()
         {
             return _keypad.getValue(this.CurrentPosition);
         }
@@ -32,7 +32,7 @@ namespace AdventOfCodeLibrary.Path
 
         protected override bool IsValidCoordinate(int xPos, int yPos)
         {
-            return (_keypad.getValue(new Coordinate(xPos, yPos))!=-1);
+            return (!String.IsNullOrEmpty(_keypad.getValue(new Coordinate(xPos, yPos))));
         }
 
         protected override List<Step> SplitPathString(string input)

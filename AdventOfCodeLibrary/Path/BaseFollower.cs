@@ -44,7 +44,7 @@ namespace AdventOfCodeLibrary.Path
             {
                 newLocation = MoveOneStep();
             }
-            return newLocation;
+            return (newLocation || !this._stopOnRepeat);
         }
 
         private bool MoveOneStep()
