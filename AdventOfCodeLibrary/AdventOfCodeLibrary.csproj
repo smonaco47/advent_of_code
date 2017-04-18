@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Any.cs" />
+    <Compile Include="EncryptedRoom.cs" />
     <Compile Include="Instructions\Computer.cs" />
     <Compile Include="Instructions\IInstruction.cs" />
     <Compile Include="Instructions\IncrementInstruction.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="RangeCompare.cs" />
     <Compile Include="Tests\Path\KeypadFollower_should.cs" />
     <Compile Include="Tests\Path\Keypad_should.cs" />
+    <Compile Include="Tests\EncryptedRoom_should.cs" />
     <Compile Include="Tests\Path\Link_should.cs" />
     <Compile Include="Tests\Path\Maze_should.cs" />
     <Compile Include="Tests\Path\Coordinate_should.cs" />
