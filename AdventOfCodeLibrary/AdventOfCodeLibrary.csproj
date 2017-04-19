@@ -54,6 +54,8 @@
   <ItemGroup>
     <Compile Include="Any.cs" />
     <Compile Include="EncryptedRoom.cs" />
+    <Compile Include="Frequencies\Frequency.cs" />
+    <Compile Include="Frequencies\FrequencyPair.cs" />
     <Compile Include="Instructions\Computer.cs" />
     <Compile Include="Instructions\IInstruction.cs" />
     <Compile Include="Instructions\IncrementInstruction.cs" />
