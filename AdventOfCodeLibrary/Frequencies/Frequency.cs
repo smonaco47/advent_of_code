@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace AdventOfCodeLibrary.Frequencies
 {
-    class Frequency
+    public class Frequency
     {
         private readonly IEnumerable _name;
         private readonly List<FrequencyPair> _frequency = new List<FrequencyPair>();
@@ -35,6 +35,18 @@ namespace AdventOfCodeLibrary.Frequencies
         {
             _frequency.Sort();
             return _frequency.Take(amountToReturn).Select(f => f.Name);
+        }
+
+        public IComparable TopItem()
+        {
+            _frequency.Sort();
+            return _frequency[0].Name;
+        }
+
+        public IComparable BottomItem()
+        {
+            _frequency.Sort();
+            return _frequency[_frequency.Count-1].Name;
         }
     }
 }
