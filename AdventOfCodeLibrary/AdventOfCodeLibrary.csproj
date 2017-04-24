@@ -97,8 +97,10 @@
     <Compile Include="Tests\FileImport_should.cs" />
     <Compile Include="Tests\TriangleParser_should.cs" />
     <Compile Include="Tests\Triangle_should.cs" />
+    <Compile Include="Tests\Utilities_should.cs" />
     <Compile Include="Triangle.cs" />
     <Compile Include="TriangleParser.cs" />
+    <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
