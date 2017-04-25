@@ -59,6 +59,7 @@
     <Compile Include="Instructions\Computer.cs" />
     <Compile Include="Instructions\IInstruction.cs" />
     <Compile Include="Instructions\IncrementInstruction.cs" />
+    <Compile Include="IpAddress.cs" />
     <Compile Include="Path\BaseFollower.cs" />
     <Compile Include="Path\Keypad.cs" />
     <Compile Include="Path\KeypadFollower.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Path\ShortestPathGenerator.cs" />
     <Compile Include="Path\Step.cs" />
     <Compile Include="RangeCompare.cs" />
+    <Compile Include="Tests\IpAddress_should.cs" />
     <Compile Include="Tests\Path\KeypadFollower_should.cs" />
     <Compile Include="Tests\Path\Keypad_should.cs" />
     <Compile Include="Tests\EncryptedRoom_should.cs" />

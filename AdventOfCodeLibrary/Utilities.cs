@@ -24,5 +24,25 @@ namespace AdventOfCodeLibrary
             }
             return newList;
         }
+
+        public static bool IsPalendrome(string input, bool allowRepeats = true)
+        {
+            if (input.Length % 2 != 0) return false;
+            var previous = ' ';
+            for (int i = 0; i < input.Length / 2; i++)
+            {
+                if (input[i] != input[input.Length - 1 - i]) return false;
+                if (input[i] == previous && !allowRepeats) return false;
+                previous = input[i];
+            }
+            return true;
+        }
+
+        public static bool ContainsPalendrome(string input, int slidingScale, bool allowRepeats = true)
+        {
+            for (int i = 0; i < input.Length - slidingScale + 1; i++ )
+                if (IsPalendrome(input.Substring(i, slidingScale), allowRepeats)) return true;
+            return false;
+        }
     }
 }
