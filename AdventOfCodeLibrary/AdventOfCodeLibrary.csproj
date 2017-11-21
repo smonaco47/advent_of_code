@@ -54,8 +54,11 @@
   <ItemGroup>
     <Compile Include="Any.cs" />
     <Compile Include="EncryptedRoom.cs" />
+    <Compile Include="FileImport\FileImporter.cs" />
+    <Compile Include="FileImport\IParser.cs" />
     <Compile Include="Frequencies\Frequency.cs" />
     <Compile Include="Frequencies\FrequencyPair.cs" />
+    <Compile Include="IMatching.cs" />
     <Compile Include="Instructions\Computer.cs" />
     <Compile Include="Instructions\IInstruction.cs" />
     <Compile Include="Instructions\IncrementInstruction.cs" />
@@ -68,6 +71,7 @@
     <Compile Include="Path\ShortestPathGenerator.cs" />
     <Compile Include="Path\Step.cs" />
     <Compile Include="RangeCompare.cs" />
+    <Compile Include="Tests\FileImport\FileImporter_should_.cs" />
     <Compile Include="Tests\Path\KeypadFollower_should.cs" />
     <Compile Include="Tests\Path\Keypad_should.cs" />
     <Compile Include="Tests\EncryptedRoom_should.cs" />
@@ -92,14 +96,15 @@
     <Compile Include="Tests\Instructions\CopyValueToRegisterInstruction_should.cs" />
     <Compile Include="Instructions\DecrementInstruction.cs" />
     <Compile Include="Tests\Instructions\DecrementInstruction_should.cs" />
-    <Compile Include="FileImport.cs" />
+    <Compile Include="FileImport\FileImportAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tests\FileImport_should.cs" />
+    <Compile Include="Tests\FileImport\FileImportAdapter_should.cs" />
     <Compile Include="Tests\TriangleParser_should.cs" />
     <Compile Include="Tests\Triangle_should.cs" />
     <Compile Include="Tests\Utilities_should.cs" />
-    <Compile Include="Triangle.cs" />
-    <Compile Include="TriangleParser.cs" />
+    <Compile Include="Triangles\Triangle.cs" />
+    <Compile Include="Triangles\TriangleMatcher.cs" />
+    <Compile Include="Triangles\TriangleParser.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>

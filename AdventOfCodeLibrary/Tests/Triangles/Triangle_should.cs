@@ -10,7 +10,7 @@ namespace AdventOfCodeLibrary.Tests
             var side1 = Any.TriangleSideLength();
             var side2 = Any.TriangleSideLength();
             var side3 = side1 + side2 + 1;
-            bool isValid = Triangle.IsValid(side1, side2, side3);
+            bool isValid = new Triangle(side1, side2, side3).IsValid();
 
             Assert.AreEqual(false, isValid);
         }
@@ -20,12 +20,11 @@ namespace AdventOfCodeLibrary.Tests
         {
             var side1 = Any.TriangleSideLength();
             var side2 = Any.TriangleSideLength();
-            var side3 = side1 + side2 -1;
-            bool isValid = Triangle.IsValid(side1, side2, side3);
+            var side3 = side1 + side2 - 1;
+            bool isValid = new Triangle(side1, side2, side3).IsValid();
 
             Assert.AreEqual(true, isValid);
         }
-
 
         [Test]
         public void identify_valid_triangle_longest_second()
@@ -33,11 +32,10 @@ namespace AdventOfCodeLibrary.Tests
             var side1 = Any.TriangleSideLength();
             var side2 = Any.TriangleSideLength();
             var side3 = side1 + side2 - 1;
-            bool isValid = Triangle.IsValid(side2, side3, side1);
+            bool isValid = new Triangle(side1, side2, side3).IsValid();
 
             Assert.AreEqual(true, isValid);
         }
-
 
         [Test]
         public void identify_valid_triangle_longest_first()
@@ -45,9 +43,22 @@ namespace AdventOfCodeLibrary.Tests
             var side1 = Any.TriangleSideLength();
             var side2 = Any.TriangleSideLength();
             var side3 = side1 + side2 - 1;
-            bool isValid = Triangle.IsValid(side3, side2, side1);
+            bool isValid = new Triangle(side1, side2, side3).IsValid();
 
             Assert.AreEqual(true, isValid);
+        }
+
+        [Test]
+        public void share_assigned_sides()
+        {
+            var side1 = Any.TriangleSideLength();
+            var side2 = Any.TriangleSideLength();
+            var side3 = side1 + side2 - 1;
+            var triangle = new Triangle(side1, side2, side3);
+
+            Assert.AreEqual(side1, triangle.Sides[0]);
+            Assert.AreEqual(side2, triangle.Sides[1]);
+            Assert.AreEqual(side3, triangle.Sides[2]);
         }
     }
 }

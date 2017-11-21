@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AdventOfCodeLibrary;
+using AdventOfCodeLibrary.FileImport;
+using AdventOfCodeLibrary.Triangles;
 
 namespace Day3
 {
@@ -11,11 +9,25 @@ namespace Day3
     {
         static void Main(string[] args)
         {
-            var filereader = new FileImport();
-            var input = filereader.ReadFileToArray("..\\..\\input.txt");
-            var converted = TriangleParser.ConvertToHorizontal(input);
-            Console.Write("Valid : " + TriangleParser.GetNumberValid(converted));
+            var triangleParser = new TriangleParser();
+            triangleParser.ReadHorizontal = false;  // Part 1 : true, Part 2 : false
+            var filereader = new FileImporter<Triangle>(triangleParser);
+            var triangles = filereader.ReadFileToArray("..\\..\\input.txt");
+            Console.Write("Valid : " + GetNumberValid(triangles));
             Console.ReadKey();
+        }
+
+        private static int GetNumberValid(Triangle[] triangles)
+        {
+            int count = 0;
+            foreach (var triangle in triangles)
+            {
+                if (triangle.IsValid())
+                {
+                    count++;
+                }
+            }
+            return count;
         }
     }
 }
