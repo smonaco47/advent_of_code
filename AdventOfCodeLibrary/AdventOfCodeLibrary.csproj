@@ -58,7 +58,6 @@
     <Compile Include="FileImport\IParser.cs" />
     <Compile Include="Frequencies\Frequency.cs" />
     <Compile Include="Frequencies\FrequencyPair.cs" />
-    <Compile Include="IMatching.cs" />
     <Compile Include="Instructions\Computer.cs" />
     <Compile Include="Instructions\IInstruction.cs" />
     <Compile Include="Instructions\IncrementInstruction.cs" />
@@ -99,16 +98,18 @@
     <Compile Include="FileImport\FileImportAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\FileImport\FileImportAdapter_should.cs" />
-    <Compile Include="Tests\TriangleParser_should.cs" />
-    <Compile Include="Tests\Triangle_should.cs" />
+    <Compile Include="Tests\Triangles\TriangleParser_should.cs" />
+    <Compile Include="Tests\Triangles\Triangle_should.cs" />
     <Compile Include="Tests\Utilities_should.cs" />
     <Compile Include="Triangles\Triangle.cs" />
-    <Compile Include="Triangles\TriangleMatcher.cs" />
     <Compile Include="Triangles\TriangleParser.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tests\NewFolder2\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
