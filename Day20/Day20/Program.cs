@@ -1,5 +1,6 @@
 ﻿using System;
 using AdventOfCodeLibrary;
+using AdventOfCodeLibrary.FileImport;
 
 namespace Day20
 {
@@ -8,7 +9,7 @@ namespace Day20
         static void Main(string[] args)
         {
             string fileName = "C:\\Source\\AdventOfCode\\Day20\\input.txt";
-            FileImport file = new FileImport();
+            var file = new FileImportAdapter();
             string[] input = file.ReadFileToArray(fileName);
             var rangeCompare = new RangeCompare(input, uint.MaxValue);
             rangeCompare.CalculateNonBlocked();

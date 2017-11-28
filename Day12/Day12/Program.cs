@@ -1,5 +1,6 @@
 ﻿using System;
 using AdventOfCodeLibrary;
+using AdventOfCodeLibrary.FileImport;
 using AdventOfCodeLibrary.Instructions;
 
 namespace Day12
@@ -9,7 +10,7 @@ namespace Day12
         static void Main(string[] args)
         {
             string fileName = "C:\\Source\\AdventOfCode\\Day12\\input.txt";
-            FileImport file = new FileImport();
+            var file = new FileImportAdapter();
             string[] instructions = file.ReadFileToArray(fileName);
             IInstruction[] instructionList = (new InstructionFactory()).CreateForList(instructions);
             Computer computer = new Computer(instructionList) { ['c'] = 1 };  // FOR PART 2

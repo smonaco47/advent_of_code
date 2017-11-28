@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using AdventOfCodeLibrary;
+using AdventOfCodeLibrary.FileImport;
 using AdventOfCodeLibrary.Frequencies;
 
 namespace Day6
@@ -22,7 +23,7 @@ namespace Day6
         public static void Part1()
         {
             int sectorCount = 0;
-            var fileIO = new FileImport();
+            var fileIO = new FileImportAdapter();
             string[] invertedStrings = fileIO.ReadFileToArray("../../input.txt");
             var strings = Utilities.Transpose(invertedStrings.ToList());
             foreach (var str in strings)
@@ -38,7 +39,7 @@ namespace Day6
         public static void Part2()
         {
             int sectorCount = 0;
-            var fileIO = new FileImport();
+            var fileIO = new FileImportAdapter();
             string[] invertedStrings = fileIO.ReadFileToArray("../../input.txt");
             var strings = Utilities.Transpose(invertedStrings.ToList());
             foreach (var str in strings)

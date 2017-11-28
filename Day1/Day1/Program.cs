@@ -6,7 +6,7 @@ namespace AdventOfCode_16_1_1
 {
     class Program
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
             var pathFollower = new PathFollower();
             var path = File.ReadAllText("input1.txt");

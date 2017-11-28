@@ -1,6 +1,8 @@
-﻿using NUnit.Framework;
+﻿using AdventOfCodeLibrary;
+using Day3;
+using NUnit.Framework;
 
-namespace AdventOfCodeLibrary.Tests
+namespace Day3_Tests
 {
     public class Triangle_should
     {

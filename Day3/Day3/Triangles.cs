@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AdventOfCodeLibrary
+namespace Day3
 {
     public class Triangle
     {
@@ -8,7 +8,7 @@ namespace AdventOfCodeLibrary
 
         public Triangle(int side1, int side2, int side3)
         {
-            Sides = new List<int> {side1, side2, side3};
+            Sides = new List<int> { side1, side2, side3 };
             Sides.Sort();
         }
 

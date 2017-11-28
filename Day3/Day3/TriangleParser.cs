@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using AdventOfCodeLibrary.FileImport;
 
-namespace AdventOfCodeLibrary.Triangles
+namespace Day3
 {
     public class TriangleParser : IParser<string, Triangle>
     {
         public bool ReadHorizontal { get; set; }
-        
+
         public Triangle ParseSingle(string input)
         {
             var sides = input.Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
@@ -47,4 +47,4 @@ namespace AdventOfCodeLibrary.Triangles
     }
 }
 
-    
+

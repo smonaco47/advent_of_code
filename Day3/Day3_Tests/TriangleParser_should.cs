@@ -1,8 +1,8 @@
 ﻿using System;
-using AdventOfCodeLibrary.Triangles;
+using Day3;
 using NUnit.Framework;
 
-namespace AdventOfCodeLibrary.Tests
+namespace Day3_Tests
 {
     public class TriangleParser_should
     {
@@ -38,7 +38,7 @@ namespace AdventOfCodeLibrary.Tests
         public void convert_from_vertical_to_horizontal()
         {
             var input = new[]
-                {" 101 301 501",
+            {" 101 301 501",
                 "102 302 502",
                 "103 303 503",
                 "201 401 601",
