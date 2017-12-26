@@ -43,11 +43,11 @@ def getMapping(startArray, finishArry):
         output[i] = int(finishArry.index(startArray[i]))
     return output
 
-def simulateRound(array, mappings):
-    output = [0]*len(startArray)
-    for i in range(len(mappings)):
-        output[mappings[i]] = array[i]
-    return output
+def simulateRound(array, mappings, temp):
+    for i in range(16):
+        temp[i] = array[i]
+    for i in range(16):
+        array[mappings[i]] = temp[i]
 
 
 inputList = importFile("day16.txt").split(',')
@@ -58,12 +58,27 @@ print "Part 1: ",arrayToString(endList)
 
 mapping =  getMapping(startArray, endList)
 array = endList
-i = 1
-# while i < 1000000000:
-#     if i %1000000 ==0:
-#         print i
-#         sys.stdout.flush()
-#     i += 1
-#     array = simulateRound(array, mapping)
-print mapping
+i = 1    
+temp = [0]*len(startArray)
+print len(temp)
+while i < 1000000000-3:
+# while i < 5:
+    if i %1000000 ==0:
+        print i
+        sys.stdout.flush()
+    i += 1
+    simulateRound(array, mapping, temp)
+print "Part 2: ", arrayToString(array)
+
+simulateRound(array, mapping, temp)
+print "Part 2: ", arrayToString(array)
+simulateRound(array, mapping, temp)
+print "Part 2: ", arrayToString(array)
+simulateRound(array, mapping, temp)
+print "Part 2: ", arrayToString(array)
+simulateRound(array, mapping, temp)
+print "Part 2: ", arrayToString(array)
+simulateRound(array, mapping, temp)
+print "Part 2: ", arrayToString(array)
+simulateRound(array, mapping, temp)
 print "Part 2: ", arrayToString(array)
