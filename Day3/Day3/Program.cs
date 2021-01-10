@@ -1,20 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AdventOfCodeLibrary;
+using AdventOfCodeLibrary.FileImport;
 
 namespace Day3
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            var filereader = new FileImport();
-            var input = filereader.ReadFileToArray("..\\..\\input.txt");
-            var converted = TriangleParser.ConvertToHorizontal(input);
-            Console.Write("Valid : " + TriangleParser.GetNumberValid(converted));
+            var triangleParser = new TriangleParser
+            {
+                ReadHorizontal = false  // Part 1 : true, Part 2 : false
+            };
+            var filereader = new FileImporter<Triangle>(triangleParser);
+            var processor = new TriangleProcessor(filereader);
+            processor.Process("..\\..\\input.txt");
+            Console.Write("Valid : " + processor.GetResult());
             Console.ReadKey();
         }
     }

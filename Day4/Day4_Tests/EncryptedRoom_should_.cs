@@ -1,8 +1,9 @@
-﻿using NUnit.Framework;
+﻿using Day4;
+using NUnit.Framework;
 
-namespace AdventOfCodeLibrary.Tests
+namespace Day4_Tests
 {
-    class EncryptedRoom_should
+    class EncryptedRoom_should_
     {
         [Test]
         public void initialize_encryption_from_input_string()

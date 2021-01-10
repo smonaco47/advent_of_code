@@ -1,38 +1,39 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Text;
 using AdventOfCodeLibrary.Frequencies;
 
-namespace AdventOfCodeLibrary
+namespace Day4
 {
     public class EncryptedRoom
     {
-        const int CHECKSUM_LENGTH = 5;
+        const int ChecksumLength = 5;
         public EncryptedRoom(string input)
         {
-            var indexOfBracket = input.IndexOf("[");
+            var indexOfBracket = input.IndexOf("[", StringComparison.Ordinal);
             var indexOfChecksum = indexOfBracket + 1;
-            var indexOfSectorId = input.LastIndexOf("-") + 1;
-            this.Name = input.Substring(0, indexOfSectorId-1);
-            this.SectorId = int.Parse(input.Substring(indexOfSectorId, indexOfBracket - indexOfSectorId));
-            this.Checksum = input.Substring(indexOfChecksum, CHECKSUM_LENGTH);
+            var indexOfSectorId = input.LastIndexOf("-", StringComparison.Ordinal) + 1;
+            Name = input.Substring(0, indexOfSectorId - 1);
+            SectorId = int.Parse(input.Substring(indexOfSectorId, indexOfBracket - indexOfSectorId));
+            Checksum = input.Substring(indexOfChecksum, ChecksumLength);
         }
 
         public string Name
         {
-            get { return this._encryptedName; }
+            get { return _encryptedName; }
             private set
             {
-                this._encryptedName = value;
-                 DecryptName();
+                _encryptedName = value;
+                DecryptName();
             }
         }
-        
+
         public int SectorId
         {
-            get { return this._sectorId; }
+            get { return _sectorId; }
             private set
             {
-                this._sectorId = value;
+                _sectorId = value;
                 DecryptName();
             }
         }
@@ -45,13 +46,13 @@ namespace AdventOfCodeLibrary
 
         public bool IsValid()
         {
-            return Checksum == buildChecksum();
+            return Checksum == BuildChecksum();
         }
 
-        private string buildChecksum()
+        private string BuildChecksum()
         {
             var checksum = new StringBuilder();
-            var frequency = new Frequency(this.Name.ToArray());
+            var frequency = new Frequency(Name.ToArray());
             frequency.ItemsToSkip.Add('-');
             frequency.Build();
             var topFive = frequency.TopN(5);
@@ -60,12 +61,10 @@ namespace AdventOfCodeLibrary
             return checksum.ToString();
         }
 
-
         private void DecryptName()
         {
-            var newString = new StringBuilder(); 
-            string temp = _encryptedName;
-            for (int i = 0; i < _encryptedName.Length; i++ )
+            var newString = new StringBuilder();
+            for (int i = 0; i < _encryptedName.Length; i++)
             {
                 var c = _encryptedName[i];
                 if (c == '-')
@@ -73,10 +72,10 @@ namespace AdventOfCodeLibrary
                     newString.Append(' ');
                     continue;
                 }
-                var intChar = (int) c;
-                var intZ = (int) 'z';
-                var intA = (int) 'a';
-                newString.Append((char) (((intChar + SectorId - intA) % (intZ - intA + 1)) + intA));
+                var intChar = (int)c;
+                var intZ = (int)'z';
+                var intA = (int)'a';
+                newString.Append((char)(((intChar + SectorId - intA) % (intZ - intA + 1)) + intA));
             }
             DecryptedName = newString.ToString();
         }

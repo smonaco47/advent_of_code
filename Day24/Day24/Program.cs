@@ -1,14 +1,14 @@
 ﻿using System;
-using AdventOfCodeLibrary;
+using AdventOfCodeLibrary.FileImport;
 using AdventOfCodeLibrary.Path;
 
 namespace Day24
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            FileImport fi = new FileImport();
+            var fi = new FileImportAdapter();
             var mazeArray = fi.ReadFileToArray("input.txt");
             if (mazeArray.Length == 0) return;
             var maze = new Maze('#', '.', mazeArray);
